@@ -1,8 +1,18 @@
 import React from "react";
 
 const GameBoard = () => {
-  const [boardSize, changeBoardSize] = React.useState(8);
- 
+  //State for board game size
+  const [boardSize, changeBoardSize] = React.useState(4);
+
+  //Function to create game Board
+  const createBoard = () => {
+    const board = [];
+    for (let i = 0; i < boardSize * boardSize; i++) {
+      board.push(<div key={i}></div>);
+    }
+    return board;
+  };
+
   return <div></div>;
 };
 
