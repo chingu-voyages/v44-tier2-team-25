@@ -13,7 +13,16 @@ const GameBoard = () => {
     return board;
   };
 
-  return <div></div>;
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: `repeat(${boardSize}, 1fr)`,
+      }}
+    >
+      {createBoard()}
+    </div>
+  );
 };
 
 export default GameBoard;
