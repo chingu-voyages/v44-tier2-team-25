@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Roboto:ital,wght@1,700&display=swap');
+
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFDAA1;
+    border-radius: 4px;
+    width: 390px;
+    padding: 24px;
+}
+
+.table-header {
+    display: flex;
+    flex-direction: row;
+    margin-top: 4px;
+    max-width: 100%;
+    max-height: 34px;
+}
+
+.table-row {
+    display: flex;
+    flex-direction: row;
+    margin-top: 4px;
+    max-width: 100%;
+    max-height: 34px;
+}
+
+.table-cell {
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+}
+
+.table-cell:nth-child(1) {
+    flex: 4;
+    text-align: left;
+}
+
+.table-cell:nth-child(2) {
+    flex: 6;
+    text-align: left;
+}
+
+.table-cell:nth-child(3) {
+    flex: 1;
+}
+
+.cell-result {
+    flex: 1;
+    border-radius: 4px;
+    font-size: 10px;
+    padding: 3px 8px;
+    margin-right: 10px;
+    background-color: gray !important;
+}
+
+.table-row {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    align-items: center;
+}
