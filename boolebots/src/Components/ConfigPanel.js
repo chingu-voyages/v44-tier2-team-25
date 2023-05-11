@@ -22,6 +22,21 @@ import { useState } from "react";
 
 // to be done:
 // logic to collect the data
+
+//<<<<<<<<< to discuss:
+//--------------data can be stored individually, as:
+// const [bot1Name, setBot1Name] = useState("");
+// const [bot1Direction, setBot1Direction] = useState("");
+// const [bot1Boolean, setBot1Boolean] = useState("");
+//...
+//--------------as an array,as:
+// const [botValues, setBotValues] = useState([
+//   { name: '', direction: '', boolean: '' },
+//   { name: '', direction: '', boolean: '' },
+//   { name: '', direction: '', boolean: '' },
+//   { name: '', direction: '', boolean: '' },
+// ]);
+
 // replace the input fields with the displayed data (disappear th fields)? and clicks to edit them? 
 // validation
 // user be able to select 2 bots to battle?
