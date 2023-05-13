@@ -14,7 +14,7 @@
 .table {
     display: flex;
     flex-direction: column;
-    background-color: #FFDAA1;
+    background-color: #74C9C7;
     border-radius: 4px;
     width: 390px;
     padding: 24px;
@@ -26,20 +26,21 @@
     margin-top: 4px;
     max-width: 100%;
     max-height: 34px;
+    font-weight: bold;
 }
 
 .table-row {
     display: flex;
-    flex-direction: row;
     margin-top: 4px;
     max-width: 100%;
-    max-height: 34px;
+    height: 34px;
 }
 
 .table-cell {
+    color: #3E3E3E;
     flex: 1;
-    padding: 12px;
-    text-align: center;
+    padding: 10px;
+    font-size: 14px;
 }
 
 .table-cell:nth-child(1) {
@@ -54,6 +55,7 @@
 
 .table-cell:nth-child(3) {
     flex: 1;
+    text-align: center;
 }
 
 .cell-result {
@@ -61,8 +63,20 @@
     border-radius: 4px;
     font-size: 10px;
     padding: 3px 8px;
-    margin-right: 10px;
-    background-color: gray !important;
+    margin-right: 4px;
+    color: #f0f0f0;
+}
+
+.cell-result.win {
+    background-color: #3182CE;
+}
+
+.cell-result.tie {
+    background-color: #5F5E5E;
+}
+
+.cell-result.loss {
+    background-color: #CE3A31;
 }
 
 .table-row {
