@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import "./styles/global.scss";
 
-import Leaderboard from "./components/LeaderBoard/Leaderboard";
+import Leaderboard from "./components/Leaderboard/Leaderboard";
 
 // mock results
 const battleResults = [
