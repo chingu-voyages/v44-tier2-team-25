@@ -3,8 +3,8 @@
 .leaderboard {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    padding: 12px 24px 24px;
+    margin: 0px auto;
+    padding: 8px 24px 20px;
     background-color: $color-primary;
     border-radius: $min-size;
     max-width: 390px;
@@ -18,14 +18,14 @@
 
     .row {
         display: flex;
-        margin-top: 4px;
+        margin-bottom: 4px;
         height: 34px;
         background-color: $light-color;
         border-radius: $min-size;
         align-items: center;
-        color: #3E3E3E;
+        color: $text-primary;
         flex: 1;
-        padding: 8px;
+        padding: 6px;
     }
 
     .col {
@@ -44,9 +44,7 @@
 
         .result {
             flex: 1;
-            border-radius: $min-size;
             font-size: 10px;
-            padding: 2px 6px;
             margin-right: 4px;
             color: $light-color;
 

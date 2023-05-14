@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./leaderboard.scss";
+import { Tag } from '@chakra-ui/react'
 
 function Leaderboard({ battleResults }) {
   const [results, setResults] = useState([]);
@@ -33,13 +34,13 @@ function Leaderboard({ battleResults }) {
             <div className="col-ranking">{result.name}</div>
             <div className="col-battles">
               {result.battles.loss !== 0 && (
-                <span className="result loss">{result.battles.loss} - Loss</span>
+                <Tag className="result loss">{result.battles.loss} - Loss</Tag>
               )}
               {result.battles.tie !== 0 && (
-                <span className="result tie">{result.battles.tie} - Tie</span>
+                <Tag className="result tie">{result.battles.tie} - Tie</Tag>
               )}
               {result.battles.win !== 0 && (
-                <span className="result win">{result.battles.win} - Win</span>
+                <Tag className="result win">{result.battles.win} - Win</Tag>
               )}
             </div>
             <div className="col-positions" style={{ color: index === 0 && 'orange' }}>
