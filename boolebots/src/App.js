@@ -21,12 +21,14 @@ function App() {
     operator: "AND",
     x: 3,
     y: 4,
+    image: "./logo512.png",
   });
   const [bot2, setbot2] = React.useState({
     name: "bot1",
     operator: "AND",
     x: 5,
     y: 3,
+    image: "./logo512.png",
   });
 
   return (
