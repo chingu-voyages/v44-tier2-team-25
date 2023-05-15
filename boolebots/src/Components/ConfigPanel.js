@@ -1,4 +1,4 @@
-import "./ConfigPanel.css";
+import "../Styles/ConfigPanel.css";
 import BotPanel from "./BotPanel";
 import { useState } from "react";
 
@@ -6,29 +6,30 @@ import { useState } from "react";
 
 //       <<<<<<< draft for the config panel, consider:>>>>>>>>
 
-//the bots panel are in a different component, just a sugestion, to be discussed
+
 //there's no logic on how the data is going to be stored yet, just the inputs
 //the min-max speed values are just dummy, numbers 1 to 10
 //don't mind the css, it's just to give room till we move forward
 
 
 //       <<<<<<< to discuss>>>>>>>>
-//according to the wireframe, I imagine the inputs are going to be replaced by the data? 
+// LATER according to the wireframe, I imagine the inputs are going to be replaced by the data? 
 //naming conventions? 
-//following the wirefrime design, the boolean values will be displayed in a different way, as a button for each 0 & 1? 
+// LATER following the wirefrime design, the boolean values will be displayed in a different way, as a button for each 0 & 1? 
 
 
 // no need to say everything is draft :)
 
-// to be done:
-// logic to collect the data
 
-//<<<<<<<<< to discuss:
+
+
 //--------------data can be stored individually, as:
 // const [bot1Name, setBot1Name] = useState("");
 // const [bot1Direction, setBot1Direction] = useState("");
 // const [bot1Boolean, setBot1Boolean] = useState("");
 //...
+
+// in this case pass each input and handler (longer but easier to understand)
 //--------------as an array,as:
 // const [botValues, setBotValues] = useState([
 //   { name: '', direction: '', boolean: '' },
@@ -37,6 +38,10 @@ import { useState } from "react";
 //   { name: '', direction: '', boolean: '' },
 // ]);
 
+// in this case pass the array with index, more difficult to handle
+
+// to be done:
+// logic to collect the data
 // replace the input fields with the displayed data (disappear th fields)? and clicks to edit them? 
 // validation
 // user be able to select 2 bots to battle?
@@ -48,6 +53,9 @@ import { useState } from "react";
 const ConfigPanel = () => {
   const [speed, setSpeed] = useState(1);
   const [operator, setOperator] = useState("");
+  const [errorMessage, setErrorMessage] = useState('')
+
+
 
   return (
     <div className="main-container">           

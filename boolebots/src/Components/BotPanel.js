@@ -1,9 +1,10 @@
-import "./BotPanel.css";
+import "../Styles/BotPanel.css";
 
 //component for each bot panel, displaying name, direction & boolean (maybe it's not needed)
 //the * are supposed to be replaced by the bots numbers (1,2,3,4) 
 
 const BotPanel = () => {
+
 
   return (
     <div className="bot-inputs">
