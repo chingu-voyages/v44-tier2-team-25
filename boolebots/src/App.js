@@ -8,9 +8,15 @@ function App() {
     x: 3,
     y: 4,
   });
+  const [bot2, setbot2] = React.useState({
+    name: "bot1",
+    operator: "AND",
+    x: 5,
+    y: 3,
+  });
   return (
     <div className="App">
-      <GameBoard boardSize={boardSize} bot1={bot1} />
+      <GameBoard boardSize={boardSize} bot1={bot1} bot2={bot2} />
     </div>
   );
 }
