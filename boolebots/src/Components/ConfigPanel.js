@@ -2,65 +2,60 @@ import "../Styles/ConfigPanel.css";
 import BotPanel from "./BotPanel";
 import { useState } from "react";
 
-
-
 //       <<<<<<< draft for the config panel, consider:>>>>>>>>
 
 
-//there's no logic on how the data is going to be stored yet, just the inputs
-//the min-max speed values are just dummy, numbers 1 to 10
-//don't mind the css, it's just to give room till we move forward
 
-
-//       <<<<<<< to discuss>>>>>>>>
-// LATER according to the wireframe, I imagine the inputs are going to be replaced by the data? 
-//naming conventions? 
-// LATER following the wirefrime design, the boolean values will be displayed in a different way, as a button for each 0 & 1? 
-
-
-// no need to say everything is draft :)
-
-
-
-
-//--------------data can be stored individually, as:
-// const [bot1Name, setBot1Name] = useState("");
-// const [bot1Direction, setBot1Direction] = useState("");
-// const [bot1Boolean, setBot1Boolean] = useState("");
-//...
-
-// in this case pass each input and handler (longer but easier to understand)
-//--------------as an array,as:
-// const [botValues, setBotValues] = useState([
-//   { name: '', direction: '', boolean: '' },
-//   { name: '', direction: '', boolean: '' },
-//   { name: '', direction: '', boolean: '' },
-//   { name: '', direction: '', boolean: '' },
-// ]);
-
-// in this case pass the array with index, more difficult to handle
+// to discuss:
+//add color to bots
 
 // to be done:
-// logic to collect the data
-// replace the input fields with the displayed data (disappear th fields)? and clicks to edit them? 
+
 // validation
+//add Chakra css
+
+
+// replace the input fields with the displayed data (disappear th fields)? and clicks to edit them?
 // user be able to select 2 bots to battle?
-
-
-
+// add switch for values following figma 
+//add pick color field
 
 
 const ConfigPanel = () => {
+  const [bot1Data, setBot1Data] = useState({
+    id: 1,
+    name: "",
+    direction: "",
+    boolean: "",
+  });
+  const [bot2Data, setBot2Data] = useState({
+    id: 2,
+    name: "",
+    direction: "",
+    boolean: "",
+  });
+  const [bot3Data, setBot3Data] = useState({
+    id: 3,
+    name: "",
+    direction: "",
+    boolean: "",
+  });
+  const [bot4Data, setBot4Data] = useState({
+    id: 4,
+    name: "",
+    direction: "",
+    boolean: "",
+  });
+
   const [speed, setSpeed] = useState(1);
   const [operator, setOperator] = useState("");
-  const [errorMessage, setErrorMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState("");
 
 
 
   return (
-    <div className="main-container">           
-      <h2>--bots configuration panel--</h2> 
-
+    <div className="main-container">
+      <h2>--bots configuration panel--</h2>
 
       <div className="config-wrapper">
         <div className="category-wrapper">
@@ -68,12 +63,10 @@ const ConfigPanel = () => {
           <h4>Direction</h4>
           <h4>Value</h4>
         </div>
-
-        <BotPanel />
-        <BotPanel />
-        <BotPanel />
-        <BotPanel />
-
+        <BotPanel botData={bot1Data} setBotData={setBot1Data} />
+        <BotPanel botData={bot2Data} setBotData={setBot2Data} />
+        <BotPanel botData={bot3Data} setBotData={setBot3Data} />
+        <BotPanel botData={bot4Data} setBotData={setBot4Data} />
       </div>
 
       <div className="speed-operator-wrapper">
@@ -83,7 +76,7 @@ const ConfigPanel = () => {
             type="range"
             name="speed"
             min="1"
-            max="10"
+            max="4"
             value={speed}
             onChange={(e) => setSpeed(e.target.value)}
           />
