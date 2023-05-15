@@ -2,7 +2,7 @@ import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import "./styles/global.scss";
 import Leaderboard from "./components/LeaderBoard/Leaderboard";
-import GameBoard from "./components/gameBoard";
+import GameBoard from "./components/GameBoard/gameBoard";
 // mock results
 const battleResults = [
   { id: 1, name: "Argonauts", battles: { win: 1, loss: 1, tie: 1 } },
@@ -12,7 +12,10 @@ const battleResults = [
 ];
 
 function App() {
+  //State for board size. Will be useful when custom board size is implemented
   const [boardSize, changeBoardSize] = React.useState(8);
+
+  //Dummy bot info
   const [bot1, setbot1] = React.useState({
     name: "bot1",
     operator: "AND",
@@ -25,6 +28,7 @@ function App() {
     x: 5,
     y: 3,
   });
+
   return (
     <div className="App">
       <div className="App">
