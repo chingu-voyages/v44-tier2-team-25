@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 
-export default function speed() {
+export default function Speed() {
     
-const [speed, setSpeed] = React.useState(1)
+const [speed, setSpeed] = useState(1)
 
  useEffect(() => {
     const interval = setInterval(() => {
