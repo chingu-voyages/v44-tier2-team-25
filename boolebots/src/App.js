@@ -30,7 +30,7 @@ function App() {
       <div className="App">
         <ChakraProvider>
           <Leaderboard battleResults={battleResults} />
-          <GameBoard boardSize={boardSize} bot1={bot1} />
+          <GameBoard boardSize={boardSize} bot1={bot1} bot2={bot2} />
         </ChakraProvider>
       </div>
     </div>
