@@ -1,6 +1,6 @@
 import React from "react";
 
-const GameBoard = ({ boardSize, bot1 }) => {
+const GameBoard = ({ boardSize, bot1, bot2 }) => {
   //State for board game size. Should probably be a prop that is passed to this component.
 
   //Old function to create game Board. Not as useful as new function down below.
@@ -25,7 +25,8 @@ const GameBoard = ({ boardSize, bot1 }) => {
   }
   const gameBoard = board.map((tile) => (
     <div style={{ border: "1px solid black", padding: "30px" }} id={tile}>
-      {`${bot1.x.toString()},${bot1.y.toString()}` == tile && <p>bot</p>}
+      {(`${bot1.x.toString()},${bot1.y.toString()}` == tile ||
+        `${bot2.x.toString()},${bot2.y.toString()}` == tile) && <p>bot</p>}
     </div>
   ));
   return (
