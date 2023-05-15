@@ -1,8 +1,8 @@
+import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import "./styles/global.scss";
-
-import Leaderboard from "./components/Leaderboard/Leaderboard";
-
+import Leaderboard from "./components/LeaderBoard/Leaderboard";
+import GameBoard from "./components/gameBoard";
 // mock results
 const battleResults = [
   { id: 1, name: "Argonauts", battles: { win: 1, loss: 1, tie: 1 } },
@@ -25,10 +25,14 @@ function App() {
     x: 5,
     y: 3,
   });
-
   return (
     <div className="App">
-      <GameBoard boardSize={boardSize} bot1={bot1} />
+      <div className="App">
+        <ChakraProvider>
+          <Leaderboard battleResults={battleResults} />
+          <GameBoard boardSize={boardSize} bot1={bot1} />
+        </ChakraProvider>
+      </div>
     </div>
   );
 }
