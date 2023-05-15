@@ -1,4 +1,5 @@
-import "../Styles/ConfigPanel.css";
+
+
 import BotPanel from "./BotPanel";
 import { useState } from "react";
 
@@ -7,6 +8,7 @@ import { useState } from "react";
 
 
 // to discuss:
+//the state will be lifted up later on
 //add color to bots
 
 // to be done:

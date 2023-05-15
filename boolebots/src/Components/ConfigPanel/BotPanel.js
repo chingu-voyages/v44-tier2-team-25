@@ -1,4 +1,4 @@
-import "../Styles/BotPanel.css";
+
 import { useState } from "react";
 
 const BotPanel = ({ botData, setBotData }) => {
