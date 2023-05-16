@@ -8,7 +8,7 @@ export default function Operation(){
    }
     
     return(
-        <select value={operation} onChange={selectOps}>
+        <select className='operation--menu' value={operation} onChange={selectOps}>
         <option value="">Select an Operation</option>
         <option value="OR">OR</option>
         <option value="AND">AND</option>
