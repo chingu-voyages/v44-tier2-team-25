@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.controller{
+    background-color: rgb(49, 151, 149, 0.24);
+    max-width: 400px;
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content;
+    gap: 10px;
+}
+
+.slider{
+align-self: center;
+}
+
+.speed{
+    margin:0px;
+}
+.operation--menu{
+align-self: center;
+}
