@@ -1,5 +1,7 @@
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
+import Leaderboard from "./components/LeaderBoard/Leaderboard";
+import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
 import "./styles/global.scss";
 import Leaderboard from "./components/LeaderBoard/Leaderboard";
 import GameBoard from "./components/GameBoard/gameBoard";
@@ -33,12 +35,11 @@ function App() {
 
   return (
     <div className="App">
-      <div className="App">
-        <ChakraProvider>
-          <Leaderboard battleResults={battleResults} />
-          <GameBoard boardSize={boardSize} bot1={bot1} bot2={bot2} />
-        </ChakraProvider>
-      </div>
+      <ChakraProvider>
+        <ConfigPanel />
+        <Leaderboard battleResults={battleResults} />
+        <GameBoard />
+      </ChakraProvider>
     </div>
   );
 }
