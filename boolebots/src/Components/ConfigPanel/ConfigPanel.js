@@ -4,17 +4,12 @@ import BotPanel from "./BotPanel";
 import { useState } from "react";
 
 //       <<<<<<< draft for the config panel, consider:>>>>>>>>
-
-
-
-// to discuss:
-//the state will be lifted up later on
-//add color to bots
+// state will be lifted up later
 
 // to be done:
 
 // validation
-//add Chakra css
+//add Chakra and sass
 
 
 // replace the input fields with the displayed data (disappear th fields)? and clicks to edit them?
