@@ -1,1 +1,12 @@
 @import "../../styles/global.scss";
+
+.game-board {
+  display: inline-grid;
+  gap: 1px;
+}
+
+.tile {
+  border: 1px solid black;
+  width: 80px;
+  height: 80px;
+}

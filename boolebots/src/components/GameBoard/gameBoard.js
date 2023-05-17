@@ -1,4 +1,6 @@
 import React from "react";
+import "./gameboard.scss";
+
 const GameBoard = ({ boardSize, bot1, bot2 }) => {
   //This version allows for each square to have an id with it's coordinates. This will help when triggering a bot battle.
   const board = [];
@@ -8,8 +10,7 @@ const GameBoard = ({ boardSize, bot1, bot2 }) => {
     }
   }
   const gameBoard = board.map((tile) => (
-    <div
-      style={{ border: "1px solid black", padding: "30px" }}
+    <div className="tile"
       id={tile}
       key={tile}
     >
@@ -23,12 +24,8 @@ const GameBoard = ({ boardSize, bot1, bot2 }) => {
   ));
   return (
     <div
-      //Temporary styling to visualize board
-      style={{
-        display: "inline-grid",
-        gridTemplateColumns: `repeat(${boardSize}, 1fr)`,
-        gap: "1px",
-      }}
+      className="game-board"
+      style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)` }}
     >
       {gameBoard}
     </div>
