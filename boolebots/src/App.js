@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import Leaderboard from "./components/LeaderBoard/Leaderboard";
+import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
 import "./styles/global.scss";
-
-import Leaderboard from "./components/Leaderboard/Leaderboard";
 
 // mock results
 const battleResults = [
@@ -15,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <ChakraProvider>
+        <ConfigPanel />
         <Leaderboard battleResults={battleResults} />
       </ChakraProvider>
     </div>
