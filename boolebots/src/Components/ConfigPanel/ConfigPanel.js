@@ -19,36 +19,49 @@ import { useState } from "react";
 
 
 const ConfigPanel = () => {
+
+  const [speed, setSpeed] = useState(1); //check speed-ops component
+  const [operator, setOperator] = useState(""); // check speed-ops component
+
+  const [errorMessage, setErrorMessage] = useState(""); // state for validation
+
+
+  // initial state for each bot
   const [bot1Data, setBot1Data] = useState({
     id: 1,
     name: "",
     direction: "",
     boolean: "",
+    x: "",
+    y: "",
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
     name: "",
     direction: "",
     boolean: "",
+    x: "",
+    y: "",
   });
   const [bot3Data, setBot3Data] = useState({
     id: 3,
     name: "",
     direction: "",
     boolean: "",
+    x: "",
+    y: "",
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
     name: "",
     direction: "",
     boolean: "",
+    x: "",
+    y: "",
   });
 
-  const [speed, setSpeed] = useState(1);
-  const [operator, setOperator] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
 
-
+ 
 
   return (
     <div className="main-container">

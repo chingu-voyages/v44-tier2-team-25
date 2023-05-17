@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 const BotPanel = ({ botData, setBotData }) => {
@@ -6,12 +5,19 @@ const BotPanel = ({ botData, setBotData }) => {
   const [botDirection, setBotDirection] = useState("");
   const [botValue, setBotValue] = useState("");
 
-  const handleInputChange = (e) => { // update bot state 
+  //add random coordinates to each bot in board
+  const randomCoordinate = () => {
+    return Math.floor(Math.random() * boardSize) + 1; // 8x8 as MVP - check on gameboard component
+  };
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setBotData((prevData) => {
       const updatedData = {
         ...prevData,
         [name]: value,
+        x: randomCoordinate(),
+        y: randomCoordinate(),
       };
 
       return updatedData;
