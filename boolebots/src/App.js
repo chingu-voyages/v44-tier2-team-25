@@ -17,28 +17,12 @@ function App() {
   //State for board size. Will be useful when custom board size is implemented
   const [boardSize, changeBoardSize] = useState(8);
 
-  //Dummy bot info
-  const [bot1, setbot1] = useState({
-    name: "bot1",
-    operator: "AND",
-    x: 3,
-    y: 4,
-    image: "./logo512.png",
-  });
-  const [bot2, setbot2] = useState({
-    name: "bot1",
-    operator: "AND",
-    x: 5,
-    y: 3,
-    image: "./logo512.png",
-  });
-
   return (
     <div className="App">
       <ChakraProvider>
         <ConfigPanel />
         <Leaderboard battleResults={battleResults} />
-        <GameBoard boardSize={boardSize} bot1={bot1} bot2={bot2} />
+        <GameBoard boardSize={boardSize} />
       </ChakraProvider>
     </div>
   );

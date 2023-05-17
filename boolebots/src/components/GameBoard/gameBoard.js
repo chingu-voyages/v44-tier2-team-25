@@ -13,12 +13,12 @@ const GameBoard = ({ boardSize, bot1, bot2 }) => {
       id={tile}
       key={tile}
     >
-      {((`${bot1.x.toString()},${bot1.y.toString()}` === tile && (
+      {/* {((`${bot1.x.toString()},${bot1.y.toString()}` === tile && (
         <img src={bot1.image} alt="bot icon" />
       )) ||
         `${bot2.x.toString()},${bot2.y.toString()}` === tile) && (
         <img src={bot2.image} alt="bot icon" />
-      )}
+      )} */}
     </div>
   ));
   return (
