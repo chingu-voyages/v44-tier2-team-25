@@ -10,10 +10,7 @@ const GameBoard = ({ boardSize, bot1, bot2 }) => {
     }
   }
   const gameBoard = board.map((tile) => (
-    <div className="tile"
-      id={tile}
-      key={tile}
-    >
+    <div className="tile" id={tile} key={tile}>
       {/* {((`${bot1.x.toString()},${bot1.y.toString()}` === tile && (
         <img src={bot1.image} alt="bot icon" />
       )) ||
@@ -23,11 +20,13 @@ const GameBoard = ({ boardSize, bot1, bot2 }) => {
     </div>
   ));
   return (
-    <div
-      className="game-board"
-      style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)` }}
-    >
-      {gameBoard}
+    <div className="board-container">
+      <div
+        className="game-board"
+        style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)` }}
+      >
+        {gameBoard}
+      </div>
     </div>
   );
 };
