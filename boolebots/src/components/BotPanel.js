@@ -1,9 +1,7 @@
 import { useState } from "react";
 
 const BotPanel = ({ botData, setBotData }) => {
-  const [botName, setBotName] = useState("");
-  const [botDirection, setBotDirection] = useState("");
-  const [botValue, setBotValue] = useState("");
+
 
   //add random coordinates to each bot in board
   const randomCoordinate = () => {
