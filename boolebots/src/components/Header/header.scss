@@ -1,13 +1,15 @@
 @import '../../styles/global.scss';
 
-header {
+.header-component {
   background-color: $color-primary;
+  height: 102.4px;
 }
 
 .logo-boolebots {
   position: relative;
   display: inline-block;
   animation: floating 3s ease-in-out infinite;
+  width: 84.4px;
 }
 
 @keyframes floating {
@@ -21,5 +23,37 @@ header {
 
   100% {
     transform: translateY(0);
+  }
+}
+
+// resposivity 
+
+@media (min-width: 391px) and (max-width: 833px) {
+  .header-component {
+    height: 119.4px;
+  }
+
+  .logo-boolebots {
+    width: 210px;
+  }
+}
+
+@media (min-width: 834px) and (max-width: 1439px) {
+  .header-component {
+    height: 102.4px;
+  }
+
+  .logo-boolebots {
+    width: 240px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .header-component {
+    height: 102.4px;
+  }
+
+  .logo-boolebots {
+    width: 240px;
   }
 }
