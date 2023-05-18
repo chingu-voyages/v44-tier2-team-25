@@ -1,30 +1,24 @@
-
-
 import BotPanel from "./BotPanel";
 import { useState } from "react";
 
-//       <<<<<<< draft for the config panel, consider:>>>>>>>>
-// state will be lifted up later
+//      <<<<<<< draft for the config panel, consider:>>>>>>>>
+// all state will be lifted up later, speed and operator included
 
 // to be done:
+// * validation
+// * add Chakra and sass
 
-// validation
-//add Chakra and sass
-
-
-// replace the input fields with the displayed data (disappear th fields)? and clicks to edit them?
 // user be able to select 2 bots to battle?
-// add switch for values following figma 
-//add pick color field
+// add switch for values following figma design
+// add pick color field
+
 
 
 const ConfigPanel = () => {
-
   const [speed, setSpeed] = useState(1); //check speed-ops component
   const [operator, setOperator] = useState(""); // check speed-ops component
 
   const [errorMessage, setErrorMessage] = useState(""); // state for validation
-
 
   // initial state for each bot
   const [bot1Data, setBot1Data] = useState({
@@ -60,9 +54,6 @@ const ConfigPanel = () => {
     y: "",
   });
 
-
- 
-
   return (
     <div className="main-container">
       <h2>--bots configuration panel--</h2>
@@ -79,6 +70,8 @@ const ConfigPanel = () => {
         <BotPanel botData={bot4Data} setBotData={setBot4Data} />
       </div>
 
+      {/* <<<<<<<<<<<<<<<<<< separate components by Heet will replace the following>>>>>>>>>>>>>>>>>>
+      
       <div className="speed-operator-wrapper">
         <div>
           <label htmlFor="speed">speed</label>
@@ -100,8 +93,8 @@ const ConfigPanel = () => {
             <option value="XOR">XOR</option>
             <option value="NOT">NOT</option>
           </select>
-        </div>
-      </div>
+        </div> 
+      </div>*/}
     </div>
   );
 };

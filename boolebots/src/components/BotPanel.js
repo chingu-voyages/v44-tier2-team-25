@@ -5,7 +5,7 @@ const BotPanel = ({ botData, setBotData }) => {
 
   //add random coordinates to each bot in board
   const randomCoordinate = () => {
-    return Math.floor(Math.random() * boardSize) + 1; // 8x8 as MVP - check on gameboard component
+    return Math.floor(Math.random() * 8) + 1; // will be 8x8 as MVP - check on gameboard component for "boardsize" to replace
   };
 
   const handleInputChange = (e) => {

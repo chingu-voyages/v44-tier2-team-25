@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import Leaderboard from "./components/LeaderBoard/Leaderboard";
-import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
+import ConfigPanel from "./components/ConfigPanel";
 import "./styles/global.scss";
 
 // mock results
