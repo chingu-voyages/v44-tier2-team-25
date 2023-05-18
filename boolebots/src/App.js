@@ -1,7 +1,9 @@
+import React, { useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import Leaderboard from "./components/LeaderBoard/Leaderboard";
-import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
+import ConfigPanel from "./components/ConfigPanel";
 import "./styles/global.scss";
+import GameBoard from "./components/GameBoard/gameBoard";
 
 // mock results
 const battleResults = [
@@ -12,11 +14,15 @@ const battleResults = [
 ];
 
 function App() {
+  //State for board size. Will be useful when custom board size is implemented
+  const [boardSize, changeBoardSize] = useState(8);
+
   return (
     <div className="App">
       <ChakraProvider>
         <ConfigPanel />
         <Leaderboard battleResults={battleResults} />
+        <GameBoard boardSize={boardSize} />
       </ChakraProvider>
     </div>
   );
