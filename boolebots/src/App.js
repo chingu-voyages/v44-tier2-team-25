@@ -4,6 +4,7 @@ import Leaderboard from "./components/LeaderBoard/Leaderboard";
 import ConfigPanel from "./components/ConfigPanel";
 import "./styles/global.scss";
 import GameBoard from "./components/GameBoard/gameBoard";
+import Footer from "./components/Footer/Footer";
 
 // mock results
 const battleResults = [
@@ -23,6 +24,7 @@ function App() {
         <ConfigPanel />
         <Leaderboard battleResults={battleResults} />
         <GameBoard boardSize={boardSize} />
+        <Footer />
       </ChakraProvider>
     </div>
   );
