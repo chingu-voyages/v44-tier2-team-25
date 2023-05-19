@@ -17,8 +17,8 @@ const battleResults = [
 
 function App() {
   //State for board size. Will be useful when custom board size is implemented
-  const [boardSize, changeBoardSize] = useState(8);
-
+  // const [boardSize, changeBoardSize] = useState(8);
+  const boardSize = 8
   return (
     <div className="App">
       <ChakraProvider>

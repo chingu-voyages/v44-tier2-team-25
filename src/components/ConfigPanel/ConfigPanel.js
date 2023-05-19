@@ -17,10 +17,10 @@ import "../../styles/global.scss";
 // add pick color field
 
 const ConfigPanel = () => {
-  const [speed, setSpeed] = useState(1); //check speed-ops component
-  const [operator, setOperator] = useState(""); // check speed-ops component
+  // const [speed, setSpeed] = useState(1); //check speed-ops component
+  // const [operator, setOperator] = useState(""); // check speed-ops component
 
-  const [errorMessage, setErrorMessage] = useState(""); // state for validation
+  // const [errorMessage, setErrorMessage] = useState(""); // state for validation
 
   // initial state for each bot
   const [bot1Data, setBot1Data] = useState({

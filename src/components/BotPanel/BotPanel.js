@@ -1,9 +1,7 @@
-import { useState } from "react";
+// import { useState } from "react";
 import "./botpanel.scss";
 
 const BotPanel = ({ botData, setBotData }) => {
-
-
   //add random coordinates to each bot in board
   const randomCoordinate = () => {
     return Math.floor(Math.random() * 8) + 1; // will be 8x8 as MVP - check on gameboard component for "boardsize" to replace
