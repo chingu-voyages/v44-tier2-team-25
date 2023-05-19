@@ -1,0 +1,19 @@
+@import "../../styles/global.scss";
+@import "../../styles/variables.scss";
+
+.bot-inputs {
+  display: flex;
+  justify-content: space-around;
+  height: 34px;
+  margin-bottom: 4px;
+}
+
+.bot-inputs > input,
+select {
+  background-color: $light-color;
+  border-radius: $min-size;
+  align-items: center;
+  color: $text-primary;
+  padding: $med-size;
+  
+}
