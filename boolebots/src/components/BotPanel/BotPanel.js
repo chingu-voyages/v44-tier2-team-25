@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./botpanel.scss";
 
 const BotPanel = ({ botData, setBotData }) => {
 
@@ -28,7 +29,7 @@ const BotPanel = ({ botData, setBotData }) => {
       <input
         type="text"
         id="bot-name"
-        placeholder="Bot name"
+        placeholder="name your bot"
         name="name"
         value={botData.name}
         onChange={handleInputChange}
@@ -36,7 +37,7 @@ const BotPanel = ({ botData, setBotData }) => {
 
       <label htmlFor="bot-direction" />
       <select id="bot-direction" name="direction" onChange={handleInputChange}>
-        <option value="">--Choose a direction--</option>
+        <option value="">direction</option>
         <option value="north">North</option>
         <option value="south">South</option>
         <option value="east">East</option>
@@ -45,7 +46,7 @@ const BotPanel = ({ botData, setBotData }) => {
 
       <label htmlFor="bot-boolean" />
       <select id="bot-boolean" name="boolean" onChange={handleInputChange}>
-        <option value="">--Choose a value--</option>
+        <option value="">value</option>
         <option value="1">1</option>
         <option value="0">0</option>
       </select>

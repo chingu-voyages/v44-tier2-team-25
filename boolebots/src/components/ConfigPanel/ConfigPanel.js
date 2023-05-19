@@ -1,18 +1,20 @@
-import BotPanel from "./BotPanel";
+import BotPanel from "../BotPanel/BotPanel";
+import { Grid, GridItem } from "@chakra-ui/react";
 import { useState } from "react";
+import "./configpanel.scss";
+import "../../styles/global.scss";
 
 //      <<<<<<< draft for the config panel, consider:>>>>>>>>
 // all state will be lifted up later, speed and operator included
 
 // to be done:
 // * validation
+// replace the inputs with text when selected?
 // * add Chakra and sass
 
-// user be able to select 2 bots to battle?
+
 // add switch for values following figma design
 // add pick color field
-
-
 
 const ConfigPanel = () => {
   const [speed, setSpeed] = useState(1); //check speed-ops component
@@ -55,46 +57,26 @@ const ConfigPanel = () => {
   });
 
   return (
-    <div className="main-container">
-      <h2>--bots configuration panel--</h2>
-
-      <div className="config-wrapper">
-        <div className="category-wrapper">
-          <h4>Name</h4>
-          <h4>Direction</h4>
-          <h4>Value</h4>
-        </div>
+    <div className="config-panel">
+      <div className="category-wrapper">
+        <Grid templateColumns="1fr 1fr 1fr" templateRows="1fr" gap={4}>
+          <GridItem w="160px">
+            <h4>Name</h4>
+          </GridItem>
+          <GridItem w="80px">
+            <h4>Direction</h4>
+          </GridItem>
+          <GridItem w="50px">
+            <h4>Value</h4>
+          </GridItem>
+        </Grid>
+      </div>
+      <div>
         <BotPanel botData={bot1Data} setBotData={setBot1Data} />
         <BotPanel botData={bot2Data} setBotData={setBot2Data} />
         <BotPanel botData={bot3Data} setBotData={setBot3Data} />
         <BotPanel botData={bot4Data} setBotData={setBot4Data} />
       </div>
-
-      {/* <<<<<<<<<<<<<<<<<< separate components by Heet will replace the following>>>>>>>>>>>>>>>>>>
-      
-      <div className="speed-operator-wrapper">
-        <div>
-          <label htmlFor="speed">speed</label>
-          <input
-            type="range"
-            name="speed"
-            min="1"
-            max="4"
-            value={speed}
-            onChange={(e) => setSpeed(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="operator">operator</label>
-          <select name="operator" onChange={(e) => setOperator(e.target.value)}>
-            <option>--choose an operator--</option>
-            <option value="AND">AND</option>
-            <option value="OR">OR</option>
-            <option value="XOR">XOR</option>
-            <option value="NOT">NOT</option>
-          </select>
-        </div> 
-      </div>*/}
     </div>
   );
 };

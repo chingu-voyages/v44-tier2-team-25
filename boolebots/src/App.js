@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import Leaderboard from "./components/LeaderBoard/Leaderboard";
-import ConfigPanel from "./components/ConfigPanel";
+import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
 import "./styles/global.scss";
 import GameBoard from "./components/GameBoard/gameBoard";
 import Footer from "./components/Footer/Footer";
