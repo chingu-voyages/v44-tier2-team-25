@@ -1,3 +1,7 @@
+# Boolebots Game
+
+<a href="https://deluxe-sopapillas-b7eb87.netlify.app" target="_blank"><img src="public/boolebots-preview.gif" alt="Boolebots Preview"/></a>
+
 # voyage-tasks
 
 Your project's `readme` is as important to success as your code. For 
