@@ -7,6 +7,7 @@ const BotPanel = ({ botData, setBotData }) => {
     return Math.floor(Math.random() * 8) + 1; // will be 8x8 as MVP - check on gameboard component for "boardsize" to replace
   };
 
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setBotData((prevData) => {
