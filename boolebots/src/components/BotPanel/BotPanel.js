@@ -1,17 +1,22 @@
-
 import { useState } from "react";
+import "./botpanel.scss";
 
 const BotPanel = ({ botData, setBotData }) => {
-  const [botName, setBotName] = useState("");
-  const [botDirection, setBotDirection] = useState("");
-  const [botValue, setBotValue] = useState("");
 
-  const handleInputChange = (e) => { // update bot state 
+
+  //add random coordinates to each bot in board
+  const randomCoordinate = () => {
+    return Math.floor(Math.random() * 8) + 1; // will be 8x8 as MVP - check on gameboard component for "boardsize" to replace
+  };
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setBotData((prevData) => {
       const updatedData = {
         ...prevData,
         [name]: value,
+        x: randomCoordinate(),
+        y: randomCoordinate(),
       };
 
       return updatedData;
@@ -24,7 +29,7 @@ const BotPanel = ({ botData, setBotData }) => {
       <input
         type="text"
         id="bot-name"
-        placeholder="Bot name"
+        placeholder="name your bot"
         name="name"
         value={botData.name}
         onChange={handleInputChange}
@@ -32,7 +37,7 @@ const BotPanel = ({ botData, setBotData }) => {
 
       <label htmlFor="bot-direction" />
       <select id="bot-direction" name="direction" onChange={handleInputChange}>
-        <option value="">--Choose a direction--</option>
+        <option value="">direction</option>
         <option value="north">North</option>
         <option value="south">South</option>
         <option value="east">East</option>
@@ -41,7 +46,7 @@ const BotPanel = ({ botData, setBotData }) => {
 
       <label htmlFor="bot-boolean" />
       <select id="bot-boolean" name="boolean" onChange={handleInputChange}>
-        <option value="">--Choose a value--</option>
+        <option value="">value</option>
         <option value="1">1</option>
         <option value="0">0</option>
       </select>

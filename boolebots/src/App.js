@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
-import ConfigPanel from "./components/ConfigPanel";
+import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
 import "./styles/global.scss";
 import GameBoard from "./components/GameBoard/gameBoard";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 // mock results
 const battleResults = [
@@ -25,6 +26,7 @@ function App() {
         <ConfigPanel />
         <Leaderboard battleResults={battleResults} />
         <GameBoard boardSize={boardSize} />
+        <Footer />
       </ChakraProvider>
     </div>
   );
