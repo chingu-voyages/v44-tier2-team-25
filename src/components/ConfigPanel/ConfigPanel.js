@@ -1,6 +1,5 @@
 import BotPanel from "../BotPanel/BotPanel";
 import { Grid, GridItem } from "@chakra-ui/react";
-import { useState } from "react";
 import "./configpanel.scss";
 import "../../styles/global.scss";
 
