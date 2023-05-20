@@ -1,6 +1,5 @@
 import BotPanel from "../BotPanel/BotPanel";
 import { Grid, GridItem } from "@chakra-ui/react";
-import { useState } from "react";
 import "./configpanel.scss";
 import "../../styles/global.scss";
 
@@ -12,49 +11,23 @@ import "../../styles/global.scss";
 // replace the inputs with text when selected?
 // * add Chakra and sass
 
-
 // add switch for values following figma design
 // add pick color field
 
-const ConfigPanel = () => {
-  // const [speed, setSpeed] = useState(1); //check speed-ops component
-  // const [operator, setOperator] = useState(""); // check speed-ops component
+const ConfigPanel = ({
+  bot1Data,
+  setBot1Data,
+  bot2Data,
+  setBot2Data,
+  bot3Data,
+  setBot3Data,
+  bot4Data,
+  setBot4Data,
+}) => {
+
+
 
   // const [errorMessage, setErrorMessage] = useState(""); // state for validation
-
-  // initial state for each bot
-  const [bot1Data, setBot1Data] = useState({
-    id: 1,
-    name: "",
-    direction: "",
-    boolean: "",
-    x: "",
-    y: "",
-  });
-  const [bot2Data, setBot2Data] = useState({
-    id: 2,
-    name: "",
-    direction: "",
-    boolean: "",
-    x: "",
-    y: "",
-  });
-  const [bot3Data, setBot3Data] = useState({
-    id: 3,
-    name: "",
-    direction: "",
-    boolean: "",
-    x: "",
-    y: "",
-  });
-  const [bot4Data, setBot4Data] = useState({
-    id: 4,
-    name: "",
-    direction: "",
-    boolean: "",
-    x: "",
-    y: "",
-  });
 
   return (
     <div className="config-panel">
