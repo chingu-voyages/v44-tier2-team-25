@@ -16,6 +16,10 @@ const battleResults = [
 ];
 
 function App() {
+  const boardSize = 8;
+  function placeBot(boardSize) {
+   return Math.floor(Math.random() * boardSize + 1);
+  }
   //State for board size. Will be useful when custom board size is implemented
   // const [boardSize, changeBoardSize] = useState(8);
   const [bot1Data, setBot1Data] = useState({
@@ -23,34 +27,33 @@ function App() {
     name: "",
     direction: "",
     boolean: "",
-    x: Math.floor(Math.random() * 8 + 1),
-    y: Math.floor(Math.random() * 8 + 1),
+    x: placeBot(boardSize),
+    y: placeBot(boardSize),
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
     name: "",
     direction: "",
     boolean: "",
-    x: Math.floor(Math.random() * 8 + 1),
-    y: Math.floor(Math.random() * 8 + 1),
+    x: placeBot(boardSize),
+    y: placeBot(boardSize),
   });
   const [bot3Data, setBot3Data] = useState({
     id: 3,
     name: "",
     direction: "",
     boolean: "",
-    x: Math.floor(Math.random() * 8 + 1),
-    y: Math.floor(Math.random() * 8 + 1),
+    x: placeBot(boardSize),
+    y: placeBot(boardSize),
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
     name: "",
     direction: "",
     boolean: "",
-    x: Math.floor(Math.random() * 8 + 1),
-    y: Math.floor(Math.random() * 8 + 1),
+    x: placeBot(boardSize),
+    y: placeBot(boardSize),
   });
-  const boardSize = 8;
 
   return (
     <div className="App">
