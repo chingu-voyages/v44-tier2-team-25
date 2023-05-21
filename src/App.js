@@ -55,9 +55,24 @@ function App() {
     <div className="App">
       <ChakraProvider>
         <Header />
-        <ConfigPanel />
+        <ConfigPanel
+          bot1Data={bot1Data}
+          setBot1Data={setBot1Data}
+          bot2Data={bot2Data}
+          setBot2Data={setBot2Data}
+          bot3Data={bot3Data}
+          setBot3Data={setBot3Data}
+          bot4Data={bot4Data}
+          setBot4Data={setBot4Data}
+        />
         <Leaderboard battleResults={battleResults} />
-        <GameBoard boardSize={boardSize} />
+        <GameBoard
+          boardSize={boardSize}
+          bot1={bot1Data}
+          bot2={bot2Data}
+          bot3={bot3Data}
+          bot4={bot4Data}
+        />
         <Footer />
       </ChakraProvider>
     </div>

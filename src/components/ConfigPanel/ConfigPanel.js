@@ -1,6 +1,5 @@
 import BotPanel from "../BotPanel/BotPanel";
 import { Grid, GridItem } from "@chakra-ui/react";
-import { useState } from "react";
 import "./configpanel.scss";
 import "../../styles/global.scss";
 
@@ -12,49 +11,14 @@ import "../../styles/global.scss";
 // replace the inputs with text when selected?
 // * add Chakra and sass
 
-
 // add switch for values following figma design
 // add pick color field
 
-const ConfigPanel = () => {
+const ConfigPanel = (props) => {
   // const [speed, setSpeed] = useState(1); //check speed-ops component
   // const [operator, setOperator] = useState(""); // check speed-ops component
 
   // const [errorMessage, setErrorMessage] = useState(""); // state for validation
-
-  // initial state for each bot
-  const [bot1Data, setBot1Data] = useState({
-    id: 1,
-    name: "",
-    direction: "",
-    boolean: "",
-    x: "",
-    y: "",
-  });
-  const [bot2Data, setBot2Data] = useState({
-    id: 2,
-    name: "",
-    direction: "",
-    boolean: "",
-    x: "",
-    y: "",
-  });
-  const [bot3Data, setBot3Data] = useState({
-    id: 3,
-    name: "",
-    direction: "",
-    boolean: "",
-    x: "",
-    y: "",
-  });
-  const [bot4Data, setBot4Data] = useState({
-    id: 4,
-    name: "",
-    direction: "",
-    boolean: "",
-    x: "",
-    y: "",
-  });
 
   return (
     <div className="config-panel">
@@ -72,10 +36,10 @@ const ConfigPanel = () => {
         </Grid>
       </div>
       <div>
-        <BotPanel botData={bot1Data} setBotData={setBot1Data} />
-        <BotPanel botData={bot2Data} setBotData={setBot2Data} />
-        <BotPanel botData={bot3Data} setBotData={setBot3Data} />
-        <BotPanel botData={bot4Data} setBotData={setBot4Data} />
+        <BotPanel botData={props.bot1Data} setBotData={props.setBot1Data} />
+        <BotPanel botData={props.bot2Data} setBotData={props.setBot2Data} />
+        <BotPanel botData={props.bot3Data} setBotData={props.setBot3Data} />
+        <BotPanel botData={props.bot4Data} setBotData={props.setBot4Data} />
       </div>
     </div>
   );
