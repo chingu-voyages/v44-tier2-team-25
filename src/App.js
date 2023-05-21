@@ -1,5 +1,4 @@
-import React from "react";
-// import React, { useState } from "react";
+import React, { useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
 import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
@@ -19,7 +18,39 @@ const battleResults = [
 function App() {
   //State for board size. Will be useful when custom board size is implemented
   // const [boardSize, changeBoardSize] = useState(8);
-  const boardSize = 8
+  const [bot1Data, setBot1Data] = useState({
+    id: 1,
+    name: "",
+    direction: "",
+    boolean: "",
+    x: "",
+    y: "",
+  });
+  const [bot2Data, setBot2Data] = useState({
+    id: 2,
+    name: "",
+    direction: "",
+    boolean: "",
+    x: "",
+    y: "",
+  });
+  const [bot3Data, setBot3Data] = useState({
+    id: 3,
+    name: "",
+    direction: "",
+    boolean: "",
+    x: "",
+    y: "",
+  });
+  const [bot4Data, setBot4Data] = useState({
+    id: 4,
+    name: "",
+    direction: "",
+    boolean: "",
+    x: "",
+    y: "",
+  });
+  const boardSize = 8;
   return (
     <div className="App">
       <ChakraProvider>
