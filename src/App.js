@@ -51,8 +51,6 @@ function App() {
     y: Math.floor(Math.random() * 8 + 1),
   });
   const boardSize = 8;
-  console.log(bot1Data.x, bot1Data.y);
-  console.log(bot2Data.x, bot2Data.y);
 
   return (
     <div className="App">
