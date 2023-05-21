@@ -18,7 +18,7 @@ const battleResults = [
 function App() {
   const boardSize = 8;
   function placeBot(boardSize) {
-   return Math.floor(Math.random() * boardSize + 1);
+    return Math.floor(Math.random() * boardSize + 1);
   }
   //State for board size. Will be useful when custom board size is implemented
   // const [boardSize, changeBoardSize] = useState(8);
@@ -72,10 +72,14 @@ function App() {
         <Leaderboard battleResults={battleResults} />
         <GameBoard
           boardSize={boardSize}
-          bot1={bot1Data}
-          bot2={bot2Data}
-          bot3={bot3Data}
-          bot4={bot4Data}
+          bot1Data={bot1Data}
+          setBot1Data={setBot1Data}
+          bot2Data={bot2Data}
+          setBot2={setBot2Data}
+          bot3Data={bot3Data}
+          setBot3={setBot3Data}
+          bot4Data={bot4Data}
+          setBot4Data={setBot4Data}
         />
         <Footer />
       </ChakraProvider>
