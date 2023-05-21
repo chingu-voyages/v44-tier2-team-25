@@ -23,34 +23,37 @@ function App() {
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: Math.floor(Math.random() * 8 + 1),
+    y: Math.floor(Math.random() * 8 + 1),
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: Math.floor(Math.random() * 8 + 1),
+    y: Math.floor(Math.random() * 8 + 1),
   });
   const [bot3Data, setBot3Data] = useState({
     id: 3,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: Math.floor(Math.random() * 8 + 1),
+    y: Math.floor(Math.random() * 8 + 1),
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: Math.floor(Math.random() * 8 + 1),
+    y: Math.floor(Math.random() * 8 + 1),
   });
   const boardSize = 8;
+  console.log(bot1Data.x, bot1Data.y);
+  console.log(bot2Data.x, bot2Data.y);
+
   return (
     <div className="App">
       <ChakraProvider>
