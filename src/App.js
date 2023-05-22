@@ -27,32 +27,32 @@ function App() {
     name: "",
     direction: "",
     boolean: "",
-    x: placeBot(boardSize),
-    y: placeBot(boardSize),
+    x: null,
+    y: null,
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
     name: "",
     direction: "",
     boolean: "",
-    x: placeBot(boardSize),
-    y: placeBot(boardSize),
+    x: null,
+    y: null,
   });
   const [bot3Data, setBot3Data] = useState({
     id: 3,
     name: "",
     direction: "",
     boolean: "",
-    x: placeBot(boardSize),
-    y: placeBot(boardSize),
+    x: null,
+    y: null,
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
     name: "",
     direction: "",
     boolean: "",
-    x: placeBot(boardSize),
-    y: placeBot(boardSize),
+    x: null,
+    y: null,
   });
 
   return (
