@@ -27,32 +27,32 @@ function App() {
     name: "",
     direction: "",
     boolean: "",
-    x: null,
-    y: null,
+    x: 0,
+    y: 0,
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
     name: "",
     direction: "",
     boolean: "",
-    x: null,
-    y: null,
+    x: 0,
+    y: 0,
   });
   const [bot3Data, setBot3Data] = useState({
     id: 3,
     name: "",
     direction: "",
     boolean: "",
-    x: null,
-    y: null,
+    x: 0,
+    y: 0,
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
     name: "",
     direction: "",
     boolean: "",
-    x: null,
-    y: null,
+    x: 0,
+    y: 0,
   });
 
   return (
