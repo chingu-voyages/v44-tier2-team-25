@@ -1,5 +1,6 @@
 import React from "react";
 import "./gameboard.scss";
+import useInterval from "../../useInterval";
 
 const GameBoard = (props) => {
   //This version allows for each square to have an id with it's coordinates. This will help when triggering a bot battle.
@@ -28,6 +29,32 @@ const GameBoard = (props) => {
       })()}
     </div>
   ));
+
+  //handles random bot movement
+  useInterval(() => {
+    props.setBot1Data(moveBots(props.bot1Data));
+    props.setBot2Data(moveBots(props.bot2Data));
+    props.setBot3Data(moveBots(props.bot3Data));
+    props.setBot4Data(moveBots(props.bot4Data));
+
+    function moveBots(botData) {
+      const directions = ["up", "down", "left", "right"];
+      const randomDirection =
+        directions[Math.floor(Math.random() * directions.length)];
+      switch (randomDirection) {
+        case "up":
+          return { ...botData, y: botData.y - 1 };
+        case "down":
+          return { ...botData, y: botData.y + 1 };
+        case "left":
+          return { ...botData, x: botData.x - 1 };
+        case "right":
+          return { ...botData, x: botData.x + 1 };
+        default:
+          return botData;
+      }
+    }
+  }, 4000);
 
   return (
     <div className="board-container">
