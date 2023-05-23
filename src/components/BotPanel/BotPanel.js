@@ -19,7 +19,9 @@ const BotPanel = ({ botData, setBotData }) => {
     });
   };
   useEffect(() => {
-    if (botData.x === 0 && botData.y === 0) {
+    const botParameters =
+      botData.x === 0 && botData.y === 0 && botData.name.length > 0;
+    if (botParameters) {
       setBotData((prevBotData) => ({
         ...prevBotData,
         x: randomCoordinate(),
@@ -27,7 +29,7 @@ const BotPanel = ({ botData, setBotData }) => {
       }));
     }
   }, [botData, setBotData]);
-  
+
   return (
     <div className="bot-inputs">
       <label htmlFor="bot-name" />
