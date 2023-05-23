@@ -17,11 +17,11 @@ const battleResults = [
 
 function App() {
   const boardSize = 8;
-  function placeBot(boardSize) {
-    return Math.floor(Math.random() * boardSize + 1);
-  }
+
   //State for board size. Will be useful when custom board size is implemented
   // const [boardSize, changeBoardSize] = useState(8);
+
+  //bot data
   const [bot1Data, setBot1Data] = useState({
     id: 1,
     name: "",
