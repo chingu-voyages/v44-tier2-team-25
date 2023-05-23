@@ -75,9 +75,9 @@ function App() {
           bot1Data={bot1Data}
           setBot1Data={setBot1Data}
           bot2Data={bot2Data}
-          setBot2={setBot2Data}
+          setBot2Data={setBot2Data}
           bot3Data={bot3Data}
-          setBot3={setBot3Data}
+          setBot3Data={setBot3Data}
           bot4Data={bot4Data}
           setBot4Data={setBot4Data}
         />
