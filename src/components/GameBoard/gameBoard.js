@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./gameboard.scss";
 import useInterval from "../../useInterval";
 
@@ -89,40 +89,61 @@ const GameBoard = (props) => {
 
 
 
+  let wins = []
+  //In this scenario, when there is a win from the operator, 
+  //we choose randomly what bot is the actual winner 
+  const chooseRandomBot =()=> Math.floor(Math.random() * 2) + 1;
+
   function calculateOutcome(value1, value2, operator) {
+  
+    let result;
+   
+
     switch (operator) {
       case "AND":
         if (value1 === "1" && value2 === "1") {// if the 2 are 1(high)
-          return "First bot to move wins";
+
+          result = `winner: bot ${chooseRandomBot()}`;
         } else {
-          return "Tie";
+          result = "Tie";
         }
+        break;
       case "OR":
         if (value1 === "1" || value2 === "1") {// only a tie of both are 0(low)
-          return "First bot to move wins";
+         result = `winner: bot ${chooseRandomBot()}`
         } else {
-          return "Tie";
+          result = "Tie";
         }
+        break;
       case "XOR":
         if ((value1 === "1" && value2 === "0") || (value1 === "0" && value2 === "1")) { // if they are uneven
-          return "First bot to move wins";
+         result = `winner: bot ${chooseRandomBot()}`
         } else {
-          return "Tie";
+         result = "Tie";
         }
+        break;
       case "NOR":
         if (value1 === "0" && value2 === "0") {// if neither is 1(high)
-          return "First bot to move wins";
+         result = `winner: bot ${chooseRandomBot()}`
         } else {
-          return "Tie";
+          result = "Tie";
         }
       default:
         return false; // not sure what the default shoul be
     }
-
+    wins.push(result)//store in array(it can be used to build the leaderBoard)
+    return wins
+   
   //  return (whatever result we come p with)
-  // and store it in array to update in leaderBoard
+ 
   }
-  
+ 
+  //test the function
+  useEffect(()=> {
+    console.log(calculateOutcome("0","1","XOR"))
+    console.log(calculateOutcome("0","1","AND"))
+  } ,[])
+
   //------------------------------------------------------------------------
 
   return (
