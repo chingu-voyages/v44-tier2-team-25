@@ -41,20 +41,89 @@ const GameBoard = (props) => {
       const directions = ["up", "down", "left", "right"];
       const randomDirection =
         directions[Math.floor(Math.random() * directions.length)];
+    
+      //  new coordinates based on the random direction
+      let newX = botData.x;
+      let newY = botData.y;
+    
       switch (randomDirection) {
         case "up":
-          return { ...botData, y: botData.y - 1 };
+          newY = Math.max(botData.y - 1, 1); //  new coordinate is within the board boundaries
+          break;
         case "down":
-          return { ...botData, y: botData.y + 1 };
+          newY = Math.min(botData.y + 1, props.boardSize); 
+          break;
         case "left":
-          return { ...botData, x: botData.x - 1 };
+          newX = Math.max(botData.x - 1, 1); 
+          break;
         case "right":
-          return { ...botData, x: botData.x + 1 };
+          newX = Math.min(botData.x + 1, props.boardSize);
+          break;
         default:
-          return botData;
+          break;
       }
+    
+      return { ...botData, x: newX, y: newY };
     }
-  }, 4000);
+    
+  }, 1000);
+
+
+
+// CHECK:  
+//In the case there is a win, we need to figure out who of the 2 actually wins 
+//we need to figure out who wins, it's up to us! maybe it depends on 
+//        the direction they come from?
+//the instructions suggest "first to move wins, I imagine it refers to every bot having a different speed"
+
+
+
+  // ----------------RULES-----------------
+//high(1) wins
+
+  //AND => high output (1) only if all its inputs are high
+  //OR => high output (1) if one or more of its inputs are high
+  //XOR => high output if either, but not both, of its two inputs are high.
+  //NOR => The outputs of all are low(0) if any of the inputs are high(1).
+
+
+
+
+  function calculateOutcome(value1, value2, operator) {
+    switch (operator) {
+      case "AND":
+        if (value1 === "1" && value2 === "1") {// if the 2 are 1(high)
+          return "First bot to move wins";
+        } else {
+          return "Tie";
+        }
+      case "OR":
+        if (value1 === "1" || value2 === "1") {// only a tie of both are 0(low)
+          return "First bot to move wins";
+        } else {
+          return "Tie";
+        }
+      case "XOR":
+        if ((value1 === "1" && value2 === "0") || (value1 === "0" && value2 === "1")) { // if they are uneven
+          return "First bot to move wins";
+        } else {
+          return "Tie";
+        }
+      case "NOR":
+        if (value1 === "0" && value2 === "0") {// if neither is 1(high)
+          return "First bot to move wins";
+        } else {
+          return "Tie";
+        }
+      default:
+        return false; // not sure what the default shoul be
+    }
+
+  //  return (whatever result we come p with)
+  // and store it in array to update in leaderBoard
+  }
+  
+  //------------------------------------------------------------------------
 
   return (
     <div className="board-container">
