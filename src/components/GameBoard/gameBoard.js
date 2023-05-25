@@ -77,6 +77,24 @@ const GameBoard = (props) => {
       >
         {gameBoard}
       </div>
+      {gameStatus === true && (
+        <button
+          onClick={() => {
+            setGameStatus(false);
+          }}
+        >
+          Pause
+        </button>
+      )}
+      {gameStatus === false && (
+        <button
+          onClick={() => {
+            setGameStatus(true);
+          }}
+        >
+          Battle!
+        </button>
+      )}
     </div>
   );
 };
