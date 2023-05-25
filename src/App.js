@@ -7,7 +7,7 @@ import "./styles/global.scss";
 import GameBoard from "./components/GameBoard/gameBoard";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-
+import Speedops from "./components/OperationPanel/Speedops"
 
 
 // mock results
@@ -78,6 +78,7 @@ const [bot4Data, setBot4Data] = useState({
           bot4Data={bot4Data}
           setBot4Data={setBot4Data}
         />
+        <Speedops/>
         <Leaderboard battleResults={battleResults} />
         <GameBoard
           boardSize={boardSize}
