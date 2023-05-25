@@ -41,20 +41,31 @@ const GameBoard = (props) => {
       const directions = ["up", "down", "left", "right"];
       const randomDirection =
         directions[Math.floor(Math.random() * directions.length)];
+
+      // this makes sure  the new coordinates are based on the random direction
+      let newX = botData.x;
+      let newY = botData.y;
+
       switch (randomDirection) {
         case "up":
-          return { ...botData, y: botData.y - 1 };
+          newY = Math.max(botData.y - 1, 1); // Ensure the new coordinate is within the board boundaries
+          break;
         case "down":
-          return { ...botData, y: botData.y + 1 };
+          newY = Math.min(botData.y + 1, props.boardSize); // Ensure the new coordinate is within the board boundaries
+          break;
         case "left":
-          return { ...botData, x: botData.x - 1 };
+          newX = Math.max(botData.x - 1, 1); // Ensure the new coordinate is within the board boundaries
+          break;
         case "right":
-          return { ...botData, x: botData.x + 1 };
+          newX = Math.min(botData.x + 1, props.boardSize); // Ensure the new coordinate is within the board boundaries
+          break;
         default:
-          return botData;
+          break;
       }
+
+      return { ...botData, x: newX, y: newY };
     }
-  }, 4000);
+  }, 1000);
 
   return (
     <div className="board-container">
