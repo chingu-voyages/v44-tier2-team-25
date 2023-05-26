@@ -7,6 +7,8 @@ import GameBoard from "./components/GameBoard/gameBoard";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
+
+
 // mock results
 const battleResults = [
   { id: 1, name: "Argonauts", battles: { win: 1, loss: 1, tie: 1 } },
@@ -58,13 +60,13 @@ function App() {
     y: 0,
     icon: "./bot4.gif",
   });
-
+  
   return (
     <div className="App">
       <ChakraProvider>
         <Header />
-        <ConfigPanel
-          bot1Data={bot1Data}
+        <ConfigPanel                //--we might want to consider making a "botsData" state 
+          bot1Data={bot1Data}       //as an array if the props are too messy--
           setBot1Data={setBot1Data}
           bot2Data={bot2Data}
           setBot2Data={setBot2Data}
@@ -84,6 +86,10 @@ function App() {
           setBot3Data={setBot3Data}
           bot4Data={bot4Data}
           setBot4Data={setBot4Data}
+          // speed={speed}
+          // setSpeed={setSpeed}
+          // operator={operator}
+          // setOperator={setOperator}
         />
         <Footer />
       </ChakraProvider>
