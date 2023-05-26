@@ -14,7 +14,16 @@ import "../../styles/global.scss";
 // add switch for values following figma design
 // add pick color field
 
-const ConfigPanel = (props) => {
+const ConfigPanel = ({
+  bot1Data,
+  setBot1Data,
+  bot2Data,
+  setBot2Data,
+  bot3Data,
+  setBot3Data,
+  bot4Data,
+  setBot4Data,
+}) => {
   // const [speed, setSpeed] = useState(1); //check speed-ops component
   // const [operator, setOperator] = useState(""); // check speed-ops component
 
@@ -36,10 +45,10 @@ const ConfigPanel = (props) => {
         </Grid>
       </div>
       <div>
-        <BotPanel botData={props.bot1Data} setBotData={props.setBot1Data} />
-        <BotPanel botData={props.bot2Data} setBotData={props.setBot2Data} />
-        <BotPanel botData={props.bot3Data} setBotData={props.setBot3Data} />
-        <BotPanel botData={props.bot4Data} setBotData={props.setBot4Data} />
+        <BotPanel botData={bot1Data} setBotData={setBot1Data} />
+        <BotPanel botData={bot2Data} setBotData={setBot2Data} />
+        <BotPanel botData={bot3Data} setBotData={setBot3Data} />
+        <BotPanel botData={bot4Data} setBotData={setBot4Data} />
       </div>
     </div>
   );
