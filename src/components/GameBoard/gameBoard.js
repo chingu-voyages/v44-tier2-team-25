@@ -2,13 +2,23 @@ import React, { useState } from "react";
 import "./gameboard.scss";
 import useInterval from "../../useInterval";
 
-const GameBoard = (props) => {
+const GameBoard = ({
+  bot1Data,
+  setBot1Data,
+  bot2Data,
+  setBot2Data,
+  bot3Data,
+  setBot3Data,
+  bot4Data,
+  setBot4Data,
+  boardSize,
+}) => {
   //State for whether the game should play out or not
   const [gameStatus, setGameStatus] = useState(false);
   //This version allows for each square to have an id with it's coordinates. This will help when triggering a bot battle.
   const board = [];
-  for (let row = 0; row < props.boardSize; row++) {
-    for (let col = 0; col < props.boardSize; col++) {
+  for (let row = 0; row < boardSize; row++) {
+    for (let col = 0; col < boardSize; col++) {
       board.push(`${col + 1},${row + 1}`);
     }
   }
@@ -17,22 +27,14 @@ const GameBoard = (props) => {
     <div className="tile" id={tile} key={tile}>
       {(() => {
         switch (tile) {
-          case `${props.bot1Data.x.toString()},${props.bot1Data.y.toString()}`:
-            return (
-              <img src={props.bot1Data.icon} alt="bot 1" className="bot-icon" />
-            );
-          case `${props.bot2Data.x.toString()},${props.bot2Data.y.toString()}`:
-            return (
-              <img src={props.bot2Data.icon} alt="bot 2" className="bot-icon" />
-            );
-          case `${props.bot3Data.x.toString()},${props.bot3Data.y.toString()}`:
-            return (
-              <img src={props.bot3Data.icon} alt="bot 3" className="bot-icon" />
-            );
-          case `${props.bot4Data.x.toString()},${props.bot4Data.y.toString()}`:
-            return (
-              <img src={props.bot4Data.icon} alt="bot 4" className="bot-icon" />
-            );
+          case `${bot1Data.x.toString()},${bot1Data.y.toString()}`:
+            return <img src={bot1Data.icon} alt="bot 1" className="bot-icon" />;
+          case `${bot2Data.x.toString()},${bot2Data.y.toString()}`:
+            return <img src={bot2Data.icon} alt="bot 2" className="bot-icon" />;
+          case `${bot3Data.x.toString()},${bot3Data.y.toString()}`:
+            return <img src={bot3Data.icon} alt="bot 3" className="bot-icon" />;
+          case `${bot4Data.x.toString()},${bot4Data.y.toString()}`:
+            return <img src={bot4Data.icon} alt="bot 4" className="bot-icon" />;
           default:
             return null;
         }
@@ -43,10 +45,10 @@ const GameBoard = (props) => {
   // handles random bot movement
   useInterval(() => {
     if (gameStatus) {
-      props.setBot1Data(moveBots(props.bot1Data));
-      props.setBot2Data(moveBots(props.bot2Data));
-      props.setBot3Data(moveBots(props.bot3Data));
-      props.setBot4Data(moveBots(props.bot4Data));
+      setBot1Data(moveBots(bot1Data));
+      setBot2Data(moveBots(bot2Data));
+      setBot3Data(moveBots(bot3Data));
+      setBot4Data(moveBots(bot4Data));
 
       function moveBots(botData) {
         const directions = ["up", "down", "left", "right"];
@@ -62,13 +64,13 @@ const GameBoard = (props) => {
             newY = Math.max(botData.y - 1, 1); // Ensure the new coordinate is within the board boundaries
             break;
           case "down":
-            newY = Math.min(botData.y + 1, props.boardSize); // Ensure the new coordinate is within the board boundaries
+            newY = Math.min(botData.y + 1, boardSize); // Ensure the new coordinate is within the board boundaries
             break;
           case "left":
             newX = Math.max(botData.x - 1, 1); // Ensure the new coordinate is within the board boundaries
             break;
           case "right":
-            newX = Math.min(botData.x + 1, props.boardSize); // Ensure the new coordinate is within the board boundaries
+            newX = Math.min(botData.x + 1, boardSize); // Ensure the new coordinate is within the board boundaries
             break;
           default:
             break;
@@ -83,7 +85,7 @@ const GameBoard = (props) => {
     <div className="board-container">
       <div
         className="game-board"
-        style={{ gridTemplateColumns: `repeat(${props.boardSize}, 1fr)` }}
+        style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)` }}
       >
         {gameBoard}
       </div>
