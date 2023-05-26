@@ -18,13 +18,21 @@ const GameBoard = (props) => {
       {(() => {
         switch (tile) {
           case `${props.bot1Data.x.toString()},${props.bot1Data.y.toString()}`:
-            return <img src={props.bot1Data.image} alt="bot 1" />;
+            return (
+              <img src={props.bot1Data.icon} alt="bot 1" className="bot-icon" />
+            );
           case `${props.bot2Data.x.toString()},${props.bot2Data.y.toString()}`:
-            return <img src={props.bot2Data.image} alt="bot 2" />;
+            return (
+              <img src={props.bot2Data.icon} alt="bot 2" className="bot-icon" />
+            );
           case `${props.bot3Data.x.toString()},${props.bot3Data.y.toString()}`:
-            return <img src={props.bot3Data.image} alt="bot 3" />;
+            return (
+              <img src={props.bot3Data.icon} alt="bot 3" className="bot-icon" />
+            );
           case `${props.bot4Data.x.toString()},${props.bot4Data.y.toString()}`:
-            return <img src={props.bot4Data.image} alt="bot 4" />;
+            return (
+              <img src={props.bot4Data.icon} alt="bot 4" className="bot-icon" />
+            );
           default:
             return null;
         }
