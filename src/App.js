@@ -29,6 +29,7 @@ function App() {
     boolean: "",
     x: 0,
     y: 0,
+    icon: "./bot1.gif",
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
@@ -37,6 +38,7 @@ function App() {
     boolean: "",
     x: 0,
     y: 0,
+    icon: "./bot2.gif",
   });
   const [bot3Data, setBot3Data] = useState({
     id: 3,
@@ -45,6 +47,7 @@ function App() {
     boolean: "",
     x: 0,
     y: 0,
+    icon: "./bot3.gif",
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
@@ -53,6 +56,7 @@ function App() {
     boolean: "",
     x: 0,
     y: 0,
+    icon: "./bot4.gif",
   });
 
   return (
