@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Box, Text, Slider, SliderTrack, SliderFilledTrack, SliderThumb, Select } from "@chakra-ui/react";
+import { Box, Text, Select } from "@chakra-ui/react";
 import "./speedops.scss"
 
 
