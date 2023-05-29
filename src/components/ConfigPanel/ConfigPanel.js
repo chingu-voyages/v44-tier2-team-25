@@ -24,11 +24,10 @@ const ConfigPanel = ({
   bot4Data,
   setBot4Data,
 }) => {
-
-
-
+  // const [speed, setSpeed] = useState(1); //check speed-ops component
+  // const [operator, setOperator] = useState(""); // check speed-ops component
   // const [errorMessage, setErrorMessage] = useState(""); // state for validation
-
+  
   return (
     <div className="config-panel">
       <div className="category-wrapper">

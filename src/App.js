@@ -17,55 +17,55 @@ const battleResults = [
 ];
 
 function App() {
-  //State for board size. Will be useful when custom board size is implemented
-  // const [boardSize, changeBoardSize] = useState(8);
   const boardSize = 8;
 
-  //---------------------
-  // const [speed, setSpeed] = useState(1); //check speed-ops component
-  // const [operator, setOperator] = useState(""); // check speed-ops component
-
-  //---------------------
-  //state for 4 botdata
+  //State for board size. Will be useful when custom board size is implemented
+  // const [boardSize, changeBoardSize] = useState(8);
+  
+  //bot data
   const [bot1Data, setBot1Data] = useState({
     id: 1,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: 0,
+    y: 0,
+    icon: "./bot1.gif",
+
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: 0,
+    y: 0,
+    icon: "./bot2.gif",
   });
   const [bot3Data, setBot3Data] = useState({
     id: 3,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: 0,
+    y: 0,
+    icon: "./bot3.gif",
+
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: 0,
+    y: 0,
+    icon: "./bot4.gif",
   });
-
-  // Speed_Operation
-
+   // Speed_Operation
   const [speed, setSpeed] = useState(1);
-
+  
   const [operation, setOperation] = useState("AND");
-
+  
   return (
     <div className="App">
       <ChakraProvider>
@@ -97,6 +97,10 @@ function App() {
           setBot3Data={setBot3Data}
           bot4Data={bot4Data}
           setBot4Data={setBot4Data}
+          speed={speed}
+          setSpeed={setSpeed}
+          operator={operator}
+          setOperator={setOperator}
         />
         <Footer />
       </ChakraProvider>
