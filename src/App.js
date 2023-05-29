@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
@@ -7,8 +6,7 @@ import "./styles/global.scss";
 import GameBoard from "./components/GameBoard/gameBoard";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Speedops from "./components/OperationPanel/Speedops"
-
+import Speedops from "./components/OperationPanel/Speedops";
 
 // mock results
 const battleResults = [
@@ -23,53 +21,57 @@ function App() {
   // const [boardSize, changeBoardSize] = useState(8);
   const boardSize = 8;
 
+  //---------------------
+  // const [speed, setSpeed] = useState(1); //check speed-ops component
+  // const [operator, setOperator] = useState(""); // check speed-ops component
 
   //---------------------
-// const [speed, setSpeed] = useState(1); //check speed-ops component
-// const [operator, setOperator] = useState(""); // check speed-ops component
+  //state for 4 botdata
+  const [bot1Data, setBot1Data] = useState({
+    id: 1,
+    name: "",
+    direction: "",
+    boolean: "",
+    x: "",
+    y: "",
+  });
+  const [bot2Data, setBot2Data] = useState({
+    id: 2,
+    name: "",
+    direction: "",
+    boolean: "",
+    x: "",
+    y: "",
+  });
+  const [bot3Data, setBot3Data] = useState({
+    id: 3,
+    name: "",
+    direction: "",
+    boolean: "",
+    x: "",
+    y: "",
+  });
+  const [bot4Data, setBot4Data] = useState({
+    id: 4,
+    name: "",
+    direction: "",
+    boolean: "",
+    x: "",
+    y: "",
+  });
 
-//---------------------
-//state for 4 botdata
-const [bot1Data, setBot1Data] = useState({
-  id: 1,
-  name: "",
-  direction: "",
-  boolean: "",
-  x: "",
-  y: "",
-});
-const [bot2Data, setBot2Data] = useState({
-  id: 2,
-  name: "",
-  direction: "",
-  boolean: "",
-  x: "",
-  y: "",
-});
-const [bot3Data, setBot3Data] = useState({
-  id: 3,
-  name: "",
-  direction: "",
-  boolean: "",
-  x: "",
-  y: "",
-});
-const [bot4Data, setBot4Data] = useState({
-  id: 4,
-  name: "",
-  direction: "",
-  boolean: "",
-  x: "",
-  y: "",
-});
+  // Speed_Operation
 
+  const [speed, setSpeed] = useState(1);
+
+  const [operation, setOperation] = useState("AND");
 
   return (
     <div className="App">
       <ChakraProvider>
         <Header />
-        <ConfigPanel                //--we might want to consider making a "botsData" state 
-          bot1Data={bot1Data}       //as an array if the props are too messy--
+        <ConfigPanel //--we might want to consider making a "botsData" state
+          bot1Data={bot1Data} //as an array if the props are too messy--
           setBot1Data={setBot1Data}
           bot2Data={bot2Data}
           setBot2Data={setBot2Data}
@@ -78,11 +80,15 @@ const [bot4Data, setBot4Data] = useState({
           bot4Data={bot4Data}
           setBot4Data={setBot4Data}
         />
-        <Speedops/>
+        <Speedops
+          speed={speed}
+          setSpeed={setSpeed}
+          operation={operation}
+          setOperation={setOperation}
+        />
         <Leaderboard battleResults={battleResults} />
         <GameBoard
           boardSize={boardSize}
-         
           bot1Data={bot1Data}
           setBot1Data={setBot1Data}
           bot2Data={bot2Data}
@@ -91,11 +97,6 @@ const [bot4Data, setBot4Data] = useState({
           setBot3Data={setBot3Data}
           bot4Data={bot4Data}
           setBot4Data={setBot4Data}
-
-          // speed={speed}
-          // setSpeed={setSpeed}
-          // operator={operator}
-          // setOperator={setOperator}
         />
         <Footer />
       </ChakraProvider>
