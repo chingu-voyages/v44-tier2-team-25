@@ -6,8 +6,7 @@ import "./styles/global.scss";
 import GameBoard from "./components/GameBoard/gameBoard";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-
-
+import Speedops from "./components/OperationPanel/Speedops";
 
 // mock results
 const battleResults = [
@@ -60,13 +59,17 @@ function App() {
     y: 0,
     icon: "./bot4.gif",
   });
-  
+  // Speed_Operation
+  const [speed, setSpeed] = useState(1);
+
+  const [operation, setOperation] = useState("AND");
+
   return (
     <div className="App">
       <ChakraProvider>
         <Header />
-        <ConfigPanel                //--we might want to consider making a "botsData" state 
-          bot1Data={bot1Data}       //as an array if the props are too messy--
+        <ConfigPanel //--we might want to consider making a "botsData" state
+          bot1Data={bot1Data} //as an array if the props are too messy--
           setBot1Data={setBot1Data}
           bot2Data={bot2Data}
           setBot2Data={setBot2Data}
@@ -74,6 +77,12 @@ function App() {
           setBot3Data={setBot3Data}
           bot4Data={bot4Data}
           setBot4Data={setBot4Data}
+        />
+        <Speedops
+          speed={speed}
+          setSpeed={setSpeed}
+          operation={operation}
+          setOperation={setOperation}
         />
         <Leaderboard battleResults={battleResults} />
         <GameBoard
@@ -86,10 +95,10 @@ function App() {
           setBot3Data={setBot3Data}
           bot4Data={bot4Data}
           setBot4Data={setBot4Data}
-          // speed={speed}
-          // setSpeed={setSpeed}
-          // operator={operator}
-          // setOperator={setOperator}
+          speed={speed}
+          setSpeed={setSpeed}
+          operator={operation}
+          setOperator={setOperation}
         />
         <Footer />
       </ChakraProvider>
