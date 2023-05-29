@@ -21,7 +21,7 @@ function App() {
 
   //State for board size. Will be useful when custom board size is implemented
   // const [boardSize, changeBoardSize] = useState(8);
-  
+
   //bot data
   const [bot1Data, setBot1Data] = useState({
     id: 1,
@@ -31,7 +31,6 @@ function App() {
     x: 0,
     y: 0,
     icon: "./bot1.gif",
-
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
@@ -50,7 +49,6 @@ function App() {
     x: 0,
     y: 0,
     icon: "./bot3.gif",
-
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
@@ -61,11 +59,11 @@ function App() {
     y: 0,
     icon: "./bot4.gif",
   });
-   // Speed_Operation
+  // Speed_Operation
   const [speed, setSpeed] = useState(1);
-  
+
   const [operation, setOperation] = useState("AND");
-  
+
   return (
     <div className="App">
       <ChakraProvider>
@@ -99,8 +97,8 @@ function App() {
           setBot4Data={setBot4Data}
           speed={speed}
           setSpeed={setSpeed}
-          operator={operator}
-          setOperator={setOperator}
+          operator={operation}
+          setOperator={setOperation}
         />
         <Footer />
       </ChakraProvider>
