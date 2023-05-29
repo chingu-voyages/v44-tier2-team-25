@@ -60,16 +60,16 @@ const GameBoard = ({
         let newY = botData.y;
 
         switch (randomDirection) {
-          case "up":
+          case "north":
             newY = Math.max(botData.y - 1, 1); // Ensure the new coordinate is within the board boundaries
             break;
-          case "down":
+          case "south":
             newY = Math.min(botData.y + 1, boardSize); // Ensure the new coordinate is within the board boundaries
             break;
-          case "left":
+          case "west":
             newX = Math.max(botData.x - 1, 1); // Ensure the new coordinate is within the board boundaries
             break;
-          case "right":
+          case "east":
             newX = Math.min(botData.x + 1, boardSize); // Ensure the new coordinate is within the board boundaries
             break;
           default:
