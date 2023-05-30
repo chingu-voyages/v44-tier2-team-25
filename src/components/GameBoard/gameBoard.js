@@ -14,9 +14,9 @@ const GameBoard = ({ boardSize }) => {
     setBot3Data,
     bot4Data,
     setBot4Data,
-    speed,
-    setSpeed,
-    setOperation,
+    // speed,
+    // setSpeed,
+    // setOperation,
   } = useContext(BotDataContext);
 
   //State for whether the game should play out or not
@@ -162,6 +162,7 @@ const GameBoard = ({ boardSize }) => {
         } else {
           result = "Tie";
         }
+        break;
       default:
         return false; // not sure what the default shoul be
     }
