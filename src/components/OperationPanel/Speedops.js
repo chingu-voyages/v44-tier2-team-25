@@ -1,19 +1,11 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { BotDataContext } from "../../App.js";
 import { Box, Text, Select } from "@chakra-ui/react";
 import "./speedops.scss";
 
 function Speedops() {
-
   //access data
   const { speed, setSpeed, setOperation } = useContext(BotDataContext);
-
-  /* speed */
-  useEffect(() => {
-    const interval = setInterval(() => {}, 1000 / speed);
-
-    return () => clearInterval(interval);
-  }, [speed]);
 
   /* Opeation */
 
@@ -29,13 +21,13 @@ function Speedops() {
           type="range"
           min="1"
           max="3"
-          value={speed}
+          value={speed === 1000 ? 1 : speed === 500 ? 2 : 3}
           className="slider"
-          onChange={(e) => setSpeed(parseInt(e.target.value))}
+          onChange={(e) => setSpeed(1000 / parseInt(e.target.value))}
         />
 
         <Text className="speed--info">
-          {speed === 1 ? "1x" : speed === 2 ? "2x" : "3x"}
+          {speed === 1000 ? "1x" : speed === 500 ? "2x" : "3x"}
         </Text>
       </Box>
 
