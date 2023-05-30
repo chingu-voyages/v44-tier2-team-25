@@ -43,39 +43,42 @@ const GameBoard = ({
   ));
 
   // handles random bot movement
+  const [isFirst, setIsFirst] = useState(true);
   useInterval(() => {
     if (gameStatus) {
       setBot1Data(moveBots(bot1Data));
       setBot2Data(moveBots(bot2Data));
       setBot3Data(moveBots(bot3Data));
       setBot4Data(moveBots(bot4Data));
-
       function moveBots(botData) {
-        const directions = ["up", "down", "left", "right"];
-        const randomDirection =
-          directions[Math.floor(Math.random() * directions.length)];
-
+        const directions = ["north", "south", "west", "east"];
+        let direction;
+        if (isFirst) {
+          direction = botData.direction;
+          setIsFirst(false);
+        } else {
+          direction = directions[Math.floor(Math.random() * directions.length)];
+        }
         // this makes sure  the new coordinates are based on the random direction
         let newX = botData.x;
         let newY = botData.y;
 
-        switch (randomDirection) {
-          case "up":
+        switch (direction) {
+          case "north":
             newY = Math.max(botData.y - 1, 1); // Ensure the new coordinate is within the board boundaries
             break;
-          case "down":
+          case "south":
             newY = Math.min(botData.y + 1, boardSize); // Ensure the new coordinate is within the board boundaries
             break;
-          case "left":
+          case "west":
             newX = Math.max(botData.x - 1, 1); // Ensure the new coordinate is within the board boundaries
             break;
-          case "right":
+          case "east":
             newX = Math.min(botData.x + 1, boardSize); // Ensure the new coordinate is within the board boundaries
             break;
           default:
             break;
         }
-
         return { ...botData, x: newX, y: newY };
       }
     }
