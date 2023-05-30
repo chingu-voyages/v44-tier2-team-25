@@ -6,6 +6,7 @@ import "./styles/global.scss";
 import GameBoard from "./components/GameBoard/gameBoard";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Speedops from "./components/OperationPanel/Speedops";
 
 // mock results
 const battleResults = [
@@ -15,19 +16,15 @@ const battleResults = [
   { id: 4, name: "Globetrotters", battles: { win: 5, loss: 0, tie: 1 } },
 ];
 
-// Create a context for the bot data
+// Create a context for the data
 const BotDataContext = createContext();
 
 function App() {
-  //State for board size. Will be useful when custom board size is implemented
-  // const [boardSize, changeBoardSize] = useState(8);
   const boardSize = 8;
 
-  //---------------------
-  // const [speed, setSpeed] = useState(1); //check speed-ops component
-  // const [operator, setOperator] = useState(""); // check speed-ops component
-
-
+   // Speed_Operation
+  const [speed,setSpeed] = useState(1)
+  const [operation, setOperation] = useState("AND");
 
   //state for 4 botdata
   const [bot1Data, setBot1Data] = useState({
@@ -66,7 +63,7 @@ function App() {
   return (
     <div className="App">
       <ChakraProvider>
-        {/* <Header /> */}
+        <Header /> 
         <BotDataContext.Provider
           value={{
             bot1Data,
@@ -77,18 +74,19 @@ function App() {
             setBot3Data,
             bot4Data,
             setBot4Data,
+            speed,
+            setSpeed,
+            operation,
+            setOperation
           }}
         >
           <ConfigPanel />
+          <Speedops />
         </BotDataContext.Provider>
         <Leaderboard battleResults={battleResults} />
         <GameBoard
           boardSize={boardSize}
 
-          // speed={speed}
-          // setSpeed={setSpeed}
-          // operator={operator}
-          // setOperator={setOperator}
         />
         <Footer />
       </ChakraProvider>

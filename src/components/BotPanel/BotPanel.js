@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useEffect } from "react";
 import "./botpanel.scss";
 import React, { useContext } from "react";
 import { BotDataContext } from "../../App.js";
@@ -39,13 +39,22 @@ const BotPanel = ({ botData, setBotData }) => {
       const updatedData = {
         ...prevData,
         [name]: value,
-        x: randomCoordinate(),
-        y: randomCoordinate(),
       };
 
       return updatedData;
     });
   };
+  useEffect(() => {
+    const botParameters =
+      botData.x === 0 && botData.y === 0 && botData.name.length > 0;
+    if (botParameters) {
+      setBotData((prevBotData) => ({
+        ...prevBotData,
+        x: randomCoordinate(),
+        y: randomCoordinate(),
+      }));
+    }
+  }, [botData, setBotData]);
 
   return (
     <div className="bot-inputs">
