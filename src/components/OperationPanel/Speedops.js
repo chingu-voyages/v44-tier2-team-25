@@ -1,10 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
+import { BotDataContext } from "../../App.js";
 import { Box, Text, Select } from "@chakra-ui/react";
 import "./speedops.scss";
 
-function Speedops({ speed, setSpeed, setOperation }) {
-  /* speed */
+function Speedops() {
 
+  //access data
+  const { speed, setSpeed, setOperation } = useContext(BotDataContext);
+
+  /* speed */
   useEffect(() => {
     const interval = setInterval(() => {}, 1000 / speed);
 

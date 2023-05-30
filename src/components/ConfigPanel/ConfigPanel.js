@@ -1,33 +1,36 @@
 import BotPanel from "../BotPanel/BotPanel";
+
+import {BotDataContext} from "../../App.js"
+import React, { useContext } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 import "./configpanel.scss";
 import "../../styles/global.scss";
 
 //      <<<<<<< draft for the config panel, consider:>>>>>>>>
-// all state will be lifted up later, speed and operator included
+
 
 // to be done:
-// * validation
+
 // replace the inputs with text when selected?
-// * add Chakra and sass
-
 // add switch for values following figma design
-// add pick color field
+// add pick color field after MVP
 
-const ConfigPanel = ({
-  bot1Data,
-  setBot1Data,
-  bot2Data,
-  setBot2Data,
-  bot3Data,
-  setBot3Data,
-  bot4Data,
-  setBot4Data,
-}) => {
-  // const [speed, setSpeed] = useState(1); //check speed-ops component
-  // const [operator, setOperator] = useState(""); // check speed-ops component
-  // const [errorMessage, setErrorMessage] = useState(""); // state for validation
-  
+const ConfigPanel = () => {
+
+  //use context data
+  const {
+    bot1Data,
+    setBot1Data,
+    bot2Data,
+    setBot2Data,
+    bot3Data,
+    setBot3Data,
+    bot4Data,
+    setBot4Data,
+  } = useContext(BotDataContext);
+
+
+
   return (
     <div className="config-panel">
       <div className="category-wrapper">
