@@ -22,8 +22,8 @@ const BotDataContext = createContext();
 function App() {
   const boardSize = 8;
 
-   // Speed_Operation
-  const [speed,setSpeed] = useState(1)
+  // Speed_Operation
+  const [speed, setSpeed] = useState(1);
   const [operation, setOperation] = useState("AND");
 
   //state for 4 botdata
@@ -32,38 +32,42 @@ function App() {
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: 0,
+    y: 0,
+    icon: "./bot1.gif",
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: 0,
+    y: 0,
+    icon: "./bot2.gif",
   });
   const [bot3Data, setBot3Data] = useState({
     id: 3,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: 0,
+    y: 0,
+    icon: "./bot3.gif",
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
     name: "",
     direction: "",
     boolean: "",
-    x: "",
-    y: "",
+    x: 0,
+    y: 0,
+    icon: "./bot4.gif",
   });
 
   return (
     <div className="App">
       <ChakraProvider>
-        <Header /> 
+        <Header />
         <BotDataContext.Provider
           value={{
             bot1Data,
@@ -77,17 +81,15 @@ function App() {
             speed,
             setSpeed,
             operation,
-            setOperation
+            setOperation,
           }}
         >
           <ConfigPanel />
           <Speedops />
+          <Leaderboard battleResults={battleResults} />
+          <GameBoard boardSize={boardSize} />
         </BotDataContext.Provider>
-        <Leaderboard battleResults={battleResults} />
-        <GameBoard
-          boardSize={boardSize}
 
-        />
         <Footer />
       </ChakraProvider>
     </div>

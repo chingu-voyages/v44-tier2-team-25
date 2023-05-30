@@ -1,18 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState, useContext } from "react";
 import "./botpanel.scss";
-import React, { useContext } from "react";
+
 import { BotDataContext } from "../../App.js";
-
-// the validation is triggered when user stops writting and leaves the camp(onblur), check if the 
-// placement of the bots function can betriggered there too.
-
-
-
-
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  ModalCloseButton,
+  Button,
+} from "@chakra-ui/react";
 
 const BotPanel = ({ botData, setBotData }) => {
   //use data from context
   const { bot1Data, bot2Data, bot3Data, bot4Data } = useContext(BotDataContext);
+  //state for toggling modal
+  const [showModal, setShowModal] = useState(false);
 
   //add random coordinates to each bot in board
   const randomCoordinate = () => {
@@ -20,16 +25,15 @@ const BotPanel = ({ botData, setBotData }) => {
   };
 
   //validation function:
+  // the validation is triggered when user stops writting and leaves the camp(onblur), check if the
   //form an array with all the bots data, check if name(e.target.value) is = to the iterated bot.name
   const handleDuplicateName = (name) => {
     const duplicateBots = [bot1Data, bot2Data, bot3Data, bot4Data].filter(
       (bot) => bot.name === name
     );
-    //if the array has 2 names and user didn't leave blank alert!(can add a modal or p tag after MVP)
     if (duplicateBots.length > 1 && !duplicateBots.includes("")) {
-      alert("this name is taken");
+      setShowModal(true);
     }
-
   };
 
   //update the data, check with bot-movement for possible refactoring
@@ -66,8 +70,22 @@ const BotPanel = ({ botData, setBotData }) => {
         name="name"
         value={botData.name}
         onChange={handleInputChange}
-        onBlur={() => handleDuplicateName(botData.name)} //can the function to place the bots be triggered onBlur as well ?
+        onBlur={() => handleDuplicateName(botData.name)} 
       />
+      {/* will only appear when state to true, toggle in validation function */}
+      <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Duplicate Name</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <p>This name is already taken. Please choose a different name.</p>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={() => setShowModal(false)}>OK</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
 
       <label htmlFor="bot-direction" />
       <select id="bot-direction" name="direction" onChange={handleInputChange}>
