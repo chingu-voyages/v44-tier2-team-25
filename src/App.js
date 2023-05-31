@@ -18,14 +18,13 @@ const battleResults = [
 
 // Create a context for the data
 const BotDataContext = createContext();
-
 function App() {
   const boardSize = 8;
 
   // Speed_Operation
-  const [speed, setSpeed] = useState(1);
+  const [speed, setSpeed] = useState(1000);
   const [operation, setOperation] = useState("AND");
-
+  const [wins, setWins] = useState([]); // Initializi the wins state for results array
   //state for 4 botdata
   const [bot1Data, setBot1Data] = useState({
     id: 1,
@@ -82,6 +81,8 @@ function App() {
             setSpeed,
             operation,
             setOperation,
+            wins,
+            setWins,
           }}
         >
           <ConfigPanel />
