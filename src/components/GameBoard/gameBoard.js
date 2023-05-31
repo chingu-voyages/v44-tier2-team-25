@@ -110,8 +110,8 @@ const GameBoard = ({ boardSize }) => {
       }
 
       if (hasMatchingBots) {
-        console.log("battle!");
-        calculateOutcome(bot1.boolean, bot2.boolean, "OR");
+        //console.log(bot1,bot2);
+        calculateOutcome(bot1, bot2, "OR");
         // battle function
         break;
       }
@@ -120,25 +120,35 @@ const GameBoard = ({ boardSize }) => {
 
   //In this scenario, when there is a win from the operator,
   //we choose randomly what bot is the actual winner
-  const chooseRandomBot = () => Math.floor(Math.random() * 2) + 1;
 
-  function calculateOutcome(value1, value2, operator) {
+  //randomly assign winner from the 2 colliding bots
+  const chooseRandomBot = (botA, botB) => {
+    const randomIndex = Math.floor(Math.random() * 2);
+    return randomIndex === 0 ? botA : botB;
+  };
+  
+  //check if there's a win or tie from operation, if win, assign winner with the random function
+  function calculateOutcome(botA, botB, operator) {
     let result;
-
+    let value1 = botA.boolean;
+    let value2 = botB.boolean;
+    console.log(value1, value2, operator);
+  
     switch (operator) {
       case "AND":
         if (value1 === "1" && value2 === "1") {
-          // if the 2 are 1(high)
-
-          result = `winner: bot ${chooseRandomBot()}`;
+          // if both are 1(high)
+          const winner = chooseRandomBot(botA, botB);
+          result = `winner: ${winner.name}`;
         } else {
           result = "Tie";
         }
         break;
       case "OR":
         if (value1 === "1" || value2 === "1") {
-          // only a tie of both are 0(low)
-          result = `winner: bot ${chooseRandomBot()}`;
+          // only a tie if both are 0(low)
+          const winner = chooseRandomBot(botA, botB);
+          result = `winner: ${winner.name}`;
         } else {
           result = "Tie";
         }
@@ -149,7 +159,8 @@ const GameBoard = ({ boardSize }) => {
           (value1 === "0" && value2 === "1")
         ) {
           // if they are uneven
-          result = `winner: bot ${chooseRandomBot()}`;
+          const winner = chooseRandomBot(botA, botB);
+          result = `winner: ${winner.name}`;
         } else {
           result = "Tie";
         }
@@ -157,24 +168,21 @@ const GameBoard = ({ boardSize }) => {
       case "NOR":
         if (value1 === "0" && value2 === "0") {
           // if neither is 1(high)
-          result = `winner: bot ${chooseRandomBot()}`;
+          const winner = chooseRandomBot(botA, botB);
+          result = `winner: ${winner.name}`;
         } else {
           result = "Tie";
         }
         break;
       default:
-        return false; // not sure what the default shoul be
+        return false; // not sure what the default should be
     }
-    // wins.push(result); //store in array(it can be used to build the leaderBoard)
-    console.log(wins, value1, value2);
+  
     setWins((prevWins) => [...prevWins, result]);
+    console.log(wins)
   }
+  
 
-  //test the function
-  // useEffect(()=> {
-  //   console.log(calculateOutcome("0","1","XOR"))
-  //   console.log(calculateOutcome("0","1","AND"))
-  // } ,[])
 
   return (
     <div className="board-container">
