@@ -14,7 +14,7 @@ const GameBoard = ({ boardSize }) => {
     setBot3Data,
     bot4Data,
     setBot4Data,
-    // speed,
+    speed,
     // setSpeed,
     // setOperation,
   } = useContext(BotDataContext);
@@ -90,8 +90,7 @@ const GameBoard = ({ boardSize }) => {
         return { ...botData, x: newX, y: newY };
       }
     }
-  }, 500);
-
+  }, speed);
   const botsData = [bot1Data, bot2Data, bot3Data, bot4Data];
   let hasMatchingBots = false;
 
@@ -125,7 +124,7 @@ const GameBoard = ({ boardSize }) => {
 
   function calculateOutcome(value1, value2, operator) {
     let result;
-   
+
     switch (operator) {
       case "AND":
         if (value1 === "1" && value2 === "1") {
@@ -168,8 +167,7 @@ const GameBoard = ({ boardSize }) => {
     }
     // wins.push(result); //store in array(it can be used to build the leaderBoard)
     console.log(wins, value1, value2);
-    setWins(prevWins => [...prevWins, result])
-
+    setWins((prevWins) => [...prevWins, result]);
   }
 
   //test the function
