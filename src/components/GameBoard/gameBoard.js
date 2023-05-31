@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { BotDataContext } from "../../App.js";
 import "./gameboard.scss";
 
