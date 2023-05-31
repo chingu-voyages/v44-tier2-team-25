@@ -23,7 +23,7 @@ function App() {
   const boardSize = 8;
 
   // Speed_Operation
-  const [speed, setSpeed] = useState(1);
+  const [speed, setSpeed] = useState(1000);
   const [operation, setOperation] = useState("AND");
 
   //state for 4 botdata
