@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { BotDataContext } from "../../App.js";
 import "./gameboard.scss";
 
@@ -15,13 +15,13 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
-    // setSpeed,
-    // setOperation,
+    operation,
+    setWins,
   } = useContext(BotDataContext);
 
   //State for whether the game should play out or not
   const [gameStatus, setGameStatus] = useState(false);
-  const [wins, setWins] = useState([]); // Initializi the wins state for results array
+
   //This version allows for each square to have an id with it's coordinates. This will help when triggering a bot battle.
   const board = [];
   for (let row = 0; row < boardSize; row++) {
@@ -92,28 +92,17 @@ const GameBoard = ({ boardSize }) => {
     }
   }, speed);
   const botsData = [bot1Data, bot2Data, bot3Data, bot4Data];
-  let hasMatchingBots = false;
 
   const battle = () => {
-    let bot1;
-    let bot2;
     for (let i = 0; i < botsData.length - 1; i++) {
-      bot1 = botsData[i];
-
       for (let j = i + 1; j < botsData.length; j++) {
-        bot2 = botsData[j];
-
-        if (bot1.x === bot2.x && bot1.y === bot2.y) {
-          hasMatchingBots = true;
+        if (
+          botsData[i].x === botsData[j].x &&
+          botsData[i].y === botsData[j].y
+        ) {
+          calculateOutcome(botsData[i], botsData[j], operation);
           break;
         }
-      }
-
-      if (hasMatchingBots) {
-        console.log("battle!");
-        calculateOutcome(bot1.boolean, bot2.boolean, "OR");
-        // battle function
-        break;
       }
     }
   };
@@ -127,37 +116,40 @@ const GameBoard = ({ boardSize }) => {
 
     switch (operator) {
       case "AND":
-        if (value1 === "1" && value2 === "1") {
+        if (value1.boolean === "1" && value2.boolean === "1") {
           // if the 2 are 1(high)
-
-          result = `winner: bot ${chooseRandomBot()}`;
+          let winner = chooseRandomBot();
+          result = `winner: bot ${winner === 1 ? value1.name : value2.name}`;
         } else {
           result = "Tie";
         }
         break;
       case "OR":
-        if (value1 === "1" || value2 === "1") {
+        if (value1.boolean === "1" || value2.boolean === "1") {
           // only a tie of both are 0(low)
-          result = `winner: bot ${chooseRandomBot()}`;
+          let winner = chooseRandomBot();
+          result = `winner: bot ${winner === 1 ? value1.name : value2.name}`;
         } else {
           result = "Tie";
         }
         break;
       case "XOR":
         if (
-          (value1 === "1" && value2 === "0") ||
-          (value1 === "0" && value2 === "1")
+          (value1.boolean === "1" && value2.boolean === "0") ||
+          (value1.boolean === "0" && value2.boolean === "1")
         ) {
           // if they are uneven
-          result = `winner: bot ${chooseRandomBot()}`;
+          let winner = chooseRandomBot();
+          result = `winner: bot ${winner === 1 ? value1.name : value2.name}`;
         } else {
           result = "Tie";
         }
         break;
       case "NOR":
-        if (value1 === "0" && value2 === "0") {
+        if (value1.boolean === "0" && value2.boolean === "0") {
           // if neither is 1(high)
-          result = `winner: bot ${chooseRandomBot()}`;
+          let winner = chooseRandomBot();
+          result = `winner: bot ${winner === 1 ? value1.name : value2.name}`;
         } else {
           result = "Tie";
         }
@@ -166,10 +158,8 @@ const GameBoard = ({ boardSize }) => {
         return false; // not sure what the default shoul be
     }
     // wins.push(result); //store in array(it can be used to build the leaderBoard)
-    console.log(wins, value1, value2);
     setWins((prevWins) => [...prevWins, result]);
   }
-
   //test the function
   // useEffect(()=> {
   //   console.log(calculateOutcome("0","1","XOR"))
