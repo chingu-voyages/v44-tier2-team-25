@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import "./leaderboard.scss";
-import { Tag } from "@chakra-ui/react";
 import { BotDataContext } from "../../App";
 
 function Leaderboard({ battleResults }) {
