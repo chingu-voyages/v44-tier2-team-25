@@ -8,14 +8,6 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Speedops from "./components/OperationPanel/Speedops";
 
-// mock results
-const battleResults = [
-  { id: 1, name: "Argonauts", battles: { win: 1, loss: 1, tie: 1 } },
-  { id: 2, name: "Blackhawks", battles: { win: 1, loss: 0, tie: 1 } },
-  { id: 3, name: "Dynamo", battles: { win: 0, loss: 2, tie: 0 } },
-  { id: 4, name: "Globetrotters", battles: { win: 5, loss: 0, tie: 1 } },
-];
-
 // Create a context for the data
 const BotDataContext = createContext();
 
@@ -26,6 +18,7 @@ function App() {
   const [speed, setSpeed] = useState(1000);
   const [operation, setOperation] = useState("AND");
 
+  const [wins, setWins] = useState([]); // Initializi the wins state for results array
   //state for 4 botdata
   const [bot1Data, setBot1Data] = useState({
     id: 1,
@@ -82,11 +75,13 @@ function App() {
             setSpeed,
             operation,
             setOperation,
+            wins,
+            setWins,
           }}
         >
           <ConfigPanel />
           <Speedops />
-          <Leaderboard battleResults={battleResults} />
+          <Leaderboard />
           <GameBoard boardSize={boardSize} />
         </BotDataContext.Provider>
 

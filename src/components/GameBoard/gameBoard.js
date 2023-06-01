@@ -15,13 +15,15 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
+    wins,
+    setWins,
     // setSpeed,
     // setOperation,
   } = useContext(BotDataContext);
 
   //State for whether the game should play out or not
   const [gameStatus, setGameStatus] = useState(false);
-  const [wins, setWins] = useState([]); // Initializi the wins state for results array
+
   //This version allows for each square to have an id with it's coordinates. This will help when triggering a bot battle.
   const board = [];
   for (let row = 0; row < boardSize; row++) {
@@ -126,14 +128,14 @@ const GameBoard = ({ boardSize }) => {
     const randomIndex = Math.floor(Math.random() * 2);
     return randomIndex === 0 ? botA : botB;
   };
-  
+
   //check if there's a win or tie from operation, if win, assign winner with the random function
   function calculateOutcome(botA, botB, operator) {
     let result;
     let value1 = botA.boolean;
     let value2 = botB.boolean;
     console.log(value1, value2, operator);
-  
+
     switch (operator) {
       case "AND":
         if (value1 === "1" && value2 === "1") {
@@ -177,12 +179,10 @@ const GameBoard = ({ boardSize }) => {
       default:
         return false; // not sure what the default should be
     }
-  
-    setWins((prevWins) => [...prevWins, result]);
-    console.log(wins)
-  }
-  
 
+    setWins((prevWins) => [...prevWins, result]);
+    console.log(wins);
+  }
 
   return (
     <div className="board-container">
