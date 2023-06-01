@@ -15,12 +15,15 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
+    wins,
+    setWins,
     operation,
+
   } = useContext(BotDataContext);
 
   //State for whether the game should play out or not
   const [gameStatus, setGameStatus] = useState(false);
-  const [wins, setWins] = useState([]); // Initializi the wins state for results array
+
   //This version allows for each square to have an id with it's coordinates. This will help when triggering a bot battle.
   const board = [];
   for (let row = 0; row < boardSize; row++) {
@@ -178,7 +181,7 @@ const GameBoard = ({ boardSize }) => {
     }
 
     setWins((prevWins) => [...prevWins, result]);
-    console.log(operator,wins);
+
   }
 
   return (
