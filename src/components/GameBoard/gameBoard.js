@@ -17,8 +17,8 @@ const GameBoard = ({ boardSize }) => {
     speed,
     wins,
     setWins,
-    // setSpeed,
-    // setOperation,
+    operation,
+
   } = useContext(BotDataContext);
 
   //State for whether the game should play out or not
@@ -113,7 +113,7 @@ const GameBoard = ({ boardSize }) => {
 
       if (hasMatchingBots) {
         //console.log(bot1,bot2);
-        calculateOutcome(bot1, bot2, "OR");
+        calculateOutcome(bot1, bot2, operation);
         // battle function
         break;
       }
@@ -181,7 +181,7 @@ const GameBoard = ({ boardSize }) => {
     }
 
     setWins((prevWins) => [...prevWins, result]);
-    console.log(wins);
+
   }
 
   return (
