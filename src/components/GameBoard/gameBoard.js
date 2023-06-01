@@ -15,8 +15,7 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
-    // setSpeed,
-    // setOperation,
+    operation,
   } = useContext(BotDataContext);
 
   //State for whether the game should play out or not
@@ -111,7 +110,7 @@ const GameBoard = ({ boardSize }) => {
 
       if (hasMatchingBots) {
         //console.log(bot1,bot2);
-        calculateOutcome(bot1, bot2, "OR");
+        calculateOutcome(bot1, bot2, operation);
         // battle function
         break;
       }
@@ -126,14 +125,14 @@ const GameBoard = ({ boardSize }) => {
     const randomIndex = Math.floor(Math.random() * 2);
     return randomIndex === 0 ? botA : botB;
   };
-  
+
   //check if there's a win or tie from operation, if win, assign winner with the random function
   function calculateOutcome(botA, botB, operator) {
     let result;
     let value1 = botA.boolean;
     let value2 = botB.boolean;
     console.log(value1, value2, operator);
-  
+
     switch (operator) {
       case "AND":
         if (value1 === "1" && value2 === "1") {
@@ -177,12 +176,10 @@ const GameBoard = ({ boardSize }) => {
       default:
         return false; // not sure what the default should be
     }
-  
-    setWins((prevWins) => [...prevWins, result]);
-    console.log(wins)
-  }
-  
 
+    setWins((prevWins) => [...prevWins, result]);
+    console.log(operator,wins);
+  }
 
   return (
     <div className="board-container">
