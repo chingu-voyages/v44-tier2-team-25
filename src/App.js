@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Heading } from "@chakra-ui/react";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
 import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
 import "./styles/global.scss";
@@ -61,29 +61,37 @@ function App() {
     <div className="App">
       <ChakraProvider>
         <Header />
-        <BotDataContext.Provider
-          value={{
-            bot1Data,
-            setBot1Data,
-            bot2Data,
-            setBot2Data,
-            bot3Data,
-            setBot3Data,
-            bot4Data,
-            setBot4Data,
-            speed,
-            setSpeed,
-            operation,
-            setOperation,
-            wins,
-            setWins,
-          }}
-        >
-          <ConfigPanel />
-          <Speedops />
-          <Leaderboard />
-          <GameBoard boardSize={boardSize} />
-        </BotDataContext.Provider>
+        <div className="main-container">
+          <BotDataContext.Provider
+            value={{
+              bot1Data,
+              setBot1Data,
+              bot2Data,
+              setBot2Data,
+              bot3Data,
+              setBot3Data,
+              bot4Data,
+              setBot4Data,
+              speed,
+              setSpeed,
+              operation,
+              setOperation,
+              wins,
+              setWins,
+            }}
+          >
+            <div className="panels-container">
+              <Heading as="h3" size="md" className="panel-heading">
+                Configuration Panel
+              </Heading>
+              <ConfigPanel />
+              <Speedops />
+              <Leaderboard />
+            </div>
+
+            <GameBoard boardSize={boardSize} />
+          </BotDataContext.Provider>
+        </div>
 
         <Footer />
       </ChakraProvider>

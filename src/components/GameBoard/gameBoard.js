@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { BotDataContext } from "../../App.js";
+import { Button } from "@chakra-ui/react";
 import "./gameboard.scss";
 
 import useInterval from "../../useInterval";
@@ -15,10 +16,9 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
-    wins,
+   // wins,
     setWins,
     operation,
-
   } = useContext(BotDataContext);
 
   //State for whether the game should play out or not
@@ -181,7 +181,6 @@ const GameBoard = ({ boardSize }) => {
     }
 
     setWins((prevWins) => [...prevWins, result]);
-
   }
 
   return (
@@ -192,23 +191,32 @@ const GameBoard = ({ boardSize }) => {
       >
         {gameBoard}
       </div>
+
       {gameStatus === true && (
-        <button
+        <Button
+          colorScheme="teal"
+          variant='outline'
+          size="lg"
+          className="pause btn"
           onClick={() => {
             setGameStatus(false);
           }}
         >
           Pause
-        </button>
+        </Button>
       )}
       {gameStatus === false && (
-        <button
+        <Button
+          colorScheme="teal"
+          size="lg"
+          className="battle btn"
+         
           onClick={() => {
             setGameStatus(true);
           }}
         >
           Battle!
-        </button>
+        </Button>
       )}
     </div>
   );

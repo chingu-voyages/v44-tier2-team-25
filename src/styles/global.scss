@@ -3,3 +3,22 @@
 * {
     font-family: $font-primary;
 }
+
+.main-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #F0F0F0;
+    padding: 40px 0 40px 0;
+}
+
+.panels-container{
+    background-color: white;
+    padding: 30px 15px 30px 15px;
+}
+
+.panel-heading{
+    text-align: center;
+    margin-bottom: 20px;
+}
