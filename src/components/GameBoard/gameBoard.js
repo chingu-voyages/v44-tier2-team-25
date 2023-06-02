@@ -16,7 +16,7 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
-    wins,
+   // wins,
     setWins,
     operation,
   } = useContext(BotDataContext);
