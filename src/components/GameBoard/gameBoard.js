@@ -195,7 +195,9 @@ const GameBoard = ({ boardSize }) => {
       {gameStatus === true && (
         <Button
           colorScheme="teal"
+          variant='outline'
           size="lg"
+          className="pause btn"
           onClick={() => {
             setGameStatus(false);
           }}
@@ -206,8 +208,9 @@ const GameBoard = ({ boardSize }) => {
       {gameStatus === false && (
         <Button
           colorScheme="teal"
-          // size="lg"
-          width={'140px'}
+          size="lg"
+          className="battle btn"
+         
           onClick={() => {
             setGameStatus(true);
           }}
