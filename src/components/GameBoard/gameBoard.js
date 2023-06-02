@@ -161,7 +161,7 @@ const GameBoard = ({ boardSize }) => {
           // if both are 1(high)
           battleResult = chooseRandomBot(botA, botB);
           battleWinner = `winner: ${battleResult.winner.name}`;
-          battleLoser = `loser : ${battleResult.loser.name}`;
+          battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
           battleWinner = "Tie";
         }
@@ -171,7 +171,7 @@ const GameBoard = ({ boardSize }) => {
           // only a tie if both are 0(low)
           battleResult = chooseRandomBot(botA, botB);
           battleWinner = `winner: ${battleResult.winner.name}`;
-          battleLoser = `loser : ${battleResult.loser.name}`;
+          battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
           battleWinner = "Tie";
         }
@@ -184,7 +184,7 @@ const GameBoard = ({ boardSize }) => {
           // if they are uneven
           battleResult = chooseRandomBot(botA, botB);
           battleWinner = `winner: ${battleResult.winner.name}`;
-          battleLoser = `loser : ${battleResult.loser.name}`;
+          battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
           battleWinner = "Tie";
         }
@@ -194,7 +194,7 @@ const GameBoard = ({ boardSize }) => {
           // if neither is 1(high)
           battleResult = chooseRandomBot(botA, botB);
           battleWinner = `winner: ${battleResult.winner.name}`;
-          battleLoser = `loser : ${battleResult.loser.name}`;
+          battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
           battleWinner = "Tie";
         }
