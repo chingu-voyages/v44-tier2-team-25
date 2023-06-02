@@ -18,7 +18,7 @@ function App() {
   const [speed, setSpeed] = useState(1000);
   const [operation, setOperation] = useState("AND");
 
-  const [wins, setWins] = useState([]); // Initializi the wins state for results array
+  const [gameResults, setGameResults] = useState([]); // Initializi the wins state for results array
   //state for 4 botdata
   const [bot1Data, setBot1Data] = useState({
     id: 1,
@@ -79,8 +79,8 @@ function App() {
             setSpeed,
             operation,
             setOperation,
-            wins,
-            setWins,
+            gameResults,
+            setGameResults,
           }}
         >
           <ConfigPanel />

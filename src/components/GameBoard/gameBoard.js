@@ -15,8 +15,7 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
-    wins,
-    setWins,
+    setGameResults,
     operation,
   } = useContext(BotDataContext);
 
@@ -204,7 +203,7 @@ const GameBoard = ({ boardSize }) => {
         return false; // not sure what the default should be
     }
 
-    setWins((prevWins) => [...prevWins, battleWinner, battleLoser]);
+    setGameResults((prevWins) => [...prevWins, battleWinner, battleLoser]);
   }
 
   return (

@@ -3,12 +3,13 @@ import "./leaderboard.scss";
 import { BotDataContext } from "../../App";
 
 function Leaderboard({ battleResults }) {
-  const { bot1Data, bot2Data, bot3Data, bot4Data, wins } =
+  const { bot1Data, bot2Data, bot3Data, bot4Data, gameResults } =
     useContext(BotDataContext);
 
   //converts wins array into wins by bot
   const addWins = (botName) => {
-    return wins.filter((result) => result === `winner: ${botName.name}`).length;
+    return gameResults.filter((result) => result === `winner: ${botName.name}`)
+      .length;
   };
 
   const results = [
