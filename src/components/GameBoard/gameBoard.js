@@ -18,7 +18,6 @@ const GameBoard = ({ boardSize }) => {
     wins,
     setWins,
     operation,
-
   } = useContext(BotDataContext);
 
   //State for whether the game should play out or not
@@ -37,13 +36,29 @@ const GameBoard = ({ boardSize }) => {
       {(() => {
         switch (tile) {
           case `${bot1Data.x.toString()},${bot1Data.y.toString()}`:
-            return <img src={bot1Data.icon} alt="bot 1" className="bot-icon" />;
+            return (
+              bot1Data.hasLost === false && (
+                <img src={bot1Data.icon} alt="bot 1" className="bot-icon" />
+              )
+            );
           case `${bot2Data.x.toString()},${bot2Data.y.toString()}`:
-            return <img src={bot2Data.icon} alt="bot 2" className="bot-icon" />;
+            return (
+              bot2Data.hasLost === false && (
+                <img src={bot2Data.icon} alt="bot 2" className="bot-icon" />
+              )
+            );
           case `${bot3Data.x.toString()},${bot3Data.y.toString()}`:
-            return <img src={bot3Data.icon} alt="bot 3" className="bot-icon" />;
+            return (
+              bot3Data.hasLost === false && (
+                <img src={bot3Data.icon} alt="bot 3" className="bot-icon" />
+              )
+            );
           case `${bot4Data.x.toString()},${bot4Data.y.toString()}`:
-            return <img src={bot4Data.icon} alt="bot 4" className="bot-icon" />;
+            return (
+              bot4Data.hasLost === false && (
+                <img src={bot4Data.icon} alt="bot 4" className="bot-icon" />
+              )
+            );
           default:
             return null;
         }
@@ -126,12 +141,17 @@ const GameBoard = ({ boardSize }) => {
   //randomly assign winner from the 2 colliding bots
   const chooseRandomBot = (botA, botB) => {
     const randomIndex = Math.floor(Math.random() * 2);
-    return randomIndex === 0 ? botA : botB;
+    return {
+      winner: randomIndex === 0 ? botA : botB,
+      loser: randomIndex === 0 ? botB : botA,
+    };
   };
 
   //check if there's a win or tie from operation, if win, assign winner with the random function
   function calculateOutcome(botA, botB, operator) {
-    let result;
+    let battleResult;
+    let battleLoser;
+    let battleWinner;
     let value1 = botA.boolean;
     let value2 = botB.boolean;
     console.log(value1, value2, operator);
@@ -140,19 +160,21 @@ const GameBoard = ({ boardSize }) => {
       case "AND":
         if (value1 === "1" && value2 === "1") {
           // if both are 1(high)
-          const winner = chooseRandomBot(botA, botB);
-          result = `winner: ${winner.name}`;
+          battleResult = chooseRandomBot(botA, botB);
+          battleWinner = `winner: ${battleResult.winner.name}`;
+          battleLoser = `loser : ${battleResult.loser.name}`;
         } else {
-          result = "Tie";
+          battleWinner = "Tie";
         }
         break;
       case "OR":
         if (value1 === "1" || value2 === "1") {
           // only a tie if both are 0(low)
-          const winner = chooseRandomBot(botA, botB);
-          result = `winner: ${winner.name}`;
+          battleResult = chooseRandomBot(botA, botB);
+          battleWinner = `winner: ${battleResult.winner.name}`;
+          battleLoser = `loser : ${battleResult.loser.name}`;
         } else {
-          result = "Tie";
+          battleWinner = "Tie";
         }
         break;
       case "XOR":
@@ -161,27 +183,28 @@ const GameBoard = ({ boardSize }) => {
           (value1 === "0" && value2 === "1")
         ) {
           // if they are uneven
-          const winner = chooseRandomBot(botA, botB);
-          result = `winner: ${winner.name}`;
+          battleResult = chooseRandomBot(botA, botB);
+          battleWinner = `winner: ${battleResult.winner.name}`;
+          battleLoser = `loser : ${battleResult.loser.name}`;
         } else {
-          result = "Tie";
+          battleWinner = "Tie";
         }
         break;
       case "NOR":
         if (value1 === "0" && value2 === "0") {
           // if neither is 1(high)
-          const winner = chooseRandomBot(botA, botB);
-          result = `winner: ${winner.name}`;
+          battleResult = chooseRandomBot(botA, botB);
+          battleWinner = `winner: ${battleResult.winner.name}`;
+          battleLoser = `loser : ${battleResult.loser.name}`;
         } else {
-          result = "Tie";
+          battleWinner = "Tie";
         }
         break;
       default:
         return false; // not sure what the default should be
     }
 
-    setWins((prevWins) => [...prevWins, result]);
-
+    setWins((prevWins) => [...prevWins, battleWinner, battleLoser]);
   }
 
   return (
