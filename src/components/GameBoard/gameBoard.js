@@ -36,25 +36,25 @@ const GameBoard = ({ boardSize }) => {
         switch (tile) {
           case `${bot1Data.x.toString()},${bot1Data.y.toString()}`:
             return (
-              bot1Data.hasLost === false && (
+              !bot1Data.hasLost && (
                 <img src={bot1Data.icon} alt="bot 1" className="bot-icon" />
               )
             );
           case `${bot2Data.x.toString()},${bot2Data.y.toString()}`:
             return (
-              bot2Data.hasLost === false && (
+              !bot2Data.hasLost && (
                 <img src={bot2Data.icon} alt="bot 2" className="bot-icon" />
               )
             );
           case `${bot3Data.x.toString()},${bot3Data.y.toString()}`:
             return (
-              bot3Data.hasLost === false && (
+              !bot3Data.hasLost && (
                 <img src={bot3Data.icon} alt="bot 3" className="bot-icon" />
               )
             );
           case `${bot4Data.x.toString()},${bot4Data.y.toString()}`:
             return (
-              bot4Data.hasLost === false && (
+              !bot4Data.hasLost && (
                 <img src={bot4Data.icon} alt="bot 4" className="bot-icon" />
               )
             );
