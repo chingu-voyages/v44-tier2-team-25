@@ -81,7 +81,7 @@ function App() {
             }}
           >
             <div className="panels-container">
-              <Heading as="h3" size="md" className="panel-heading">
+              <Heading as="h3" size="lg" className="panel-heading">
                 Configuration Panel
               </Heading>
               <ConfigPanel />

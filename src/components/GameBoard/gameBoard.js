@@ -16,7 +16,7 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
-   // wins,
+    // wins,
     setWins,
     operation,
   } = useContext(BotDataContext);
@@ -195,7 +195,7 @@ const GameBoard = ({ boardSize }) => {
       {gameStatus === true && (
         <Button
           colorScheme="teal"
-          variant='outline'
+          variant="outline"
           size="lg"
           className="pause btn"
           onClick={() => {
@@ -210,7 +210,6 @@ const GameBoard = ({ boardSize }) => {
           colorScheme="teal"
           size="lg"
           className="battle btn"
-         
           onClick={() => {
             setGameStatus(true);
           }}
