@@ -1,6 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import "./botpanel.scss";
 
+
+
 import { BotDataContext } from "../../App.js";
 import {
   Modal,
@@ -38,11 +40,13 @@ const BotPanel = ({ botData, setBotData }) => {
 
   //update the data, check with bot-movement for possible refactoring
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
+    //conditional to handle the switch buttons as 'checkbox'
+    const inputValue = type === "checkbox" ? (checked ? "1" : "0") : value;
     setBotData((prevData) => {
       const updatedData = {
         ...prevData,
-        [name]: value,
+        [name]: inputValue,
       };
 
       return updatedData;
@@ -59,7 +63,7 @@ const BotPanel = ({ botData, setBotData }) => {
       }));
     }
   }, [botData, setBotData]);
-
+  console.log(bot1Data.boolean);
   return (
     <div className="bot-inputs">
       <label htmlFor="bot-name" />
@@ -70,7 +74,7 @@ const BotPanel = ({ botData, setBotData }) => {
         name="name"
         value={botData.name}
         onChange={handleInputChange}
-        onBlur={() => handleDuplicateName(botData.name)} 
+        onBlur={() => handleDuplicateName(botData.name)}
       />
       {/* will only appear when state to true, toggle in validation function */}
       <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
@@ -97,11 +101,22 @@ const BotPanel = ({ botData, setBotData }) => {
       </select>
 
       <label htmlFor="bot-boolean" />
-      <select id="bot-boolean" name="boolean" onChange={handleInputChange}>
-        <option value="">value</option>
-        <option value="1">1</option>
-        <option value="0">0</option>
-      </select>
+      <div className="switch-wrapper">
+        <div
+          className={`checkbox ${botData.boolean === "1" && "checkbox--on"}`}
+          onClick={() =>
+            setBotData((prevData) => ({
+              ...prevData,
+              boolean: prevData.boolean === "1" ? "0" : "1",
+            }))
+          }
+        >
+          <div className="checkbox__ball"></div>
+          <span className="checkbox__text">
+            {botData.boolean === "1" ? "1" : "0"}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
