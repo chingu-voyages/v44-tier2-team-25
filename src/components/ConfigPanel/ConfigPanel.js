@@ -51,48 +51,14 @@ const ConfigPanel = () => {
         <BotPanel botData={bot2Data} setBotData={setBot2Data} />
         <BotPanel botData={bot3Data} setBotData={setBot3Data} />
         <BotPanel botData={bot4Data} setBotData={setBot4Data} />
-        <SwitchButton/>
+    
       </div>
     </div>
   );
 };
 
-const SwitchButton = () => {
-  const [isChecked, setIsChecked] = useState(false);
 
-  const handleSwitchChange = () => {
-    setIsChecked(!isChecked);
-  };
 
-  return (
-    <Box position="relative" display="inline-block">
-            <Switch
-        isChecked={isChecked}
-        onChange={handleSwitchChange}
-        colorScheme="green"size="l"
 
-      />
-      <Text
-        position="absolute"
-        top="0"
-        left="0"
-        fontWeight="bold"
-        fontSize="sm"
-      >
-        1
-      </Text>
-      <Text
-        position="absolute"
-        top="0"
-        right="0"
-        fontWeight="bold"
-        fontSize="sm"
-      >
-        2
-      </Text>
-
-    </Box>
-  );
-};
 
 export default ConfigPanel;
