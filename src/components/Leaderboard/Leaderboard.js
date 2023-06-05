@@ -57,6 +57,8 @@ function Leaderboard({ battleResults }) {
       }
     };
     results.forEach((gameBot) => gameLosers(gameBot, gameBot.setStateFunction));
+    //Remove warning about missing dependency so netlify can properly deploy
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameResults]);
 
   //Sorts results array by number of wins
