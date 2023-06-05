@@ -18,7 +18,7 @@ const GameBoard = ({ boardSize }) => {
     setGameResults,
     operation,
   } = useContext(BotDataContext);
-
+  console.log(bot2Data.x, bot2Data.y);
   //State for whether the game should play out or not
   const [gameStatus, setGameStatus] = useState(false);
 
@@ -127,7 +127,9 @@ const GameBoard = ({ boardSize }) => {
 
       if (hasMatchingBots) {
         //console.log(bot1,bot2);
-        calculateOutcome(bot1, bot2, operation);
+        if (!bot1.hasLost && !bot2.hasLost) { //bots will only battle if both haven't lost yet
+          calculateOutcome(bot1, bot2, operation);
+        }
         // battle function
         break;
       }
