@@ -33,29 +33,50 @@ const GameBoard = ({ boardSize }) => {
   const gameBoard = board.map((tile) => (
     <div className="tile" id={tile} key={tile}>
       {(() => {
+        //Bots will be disabled and unrendered when hasLost is true
         switch (tile) {
           case `${bot1Data.x.toString()},${bot1Data.y.toString()}`:
             return (
               !bot1Data.hasLost && (
-                <img src={bot1Data.icon} alt="bot 1" className="bot-icon" />
+                <img
+                  src={bot1Data.icon}
+                  alt="bot 1"
+                  className="bot-icon"
+                  style={{ zIndex: bot1Data.hasLost ? 0 : 1 }}
+                />
               )
             );
           case `${bot2Data.x.toString()},${bot2Data.y.toString()}`:
             return (
               !bot2Data.hasLost && (
-                <img src={bot2Data.icon} alt="bot 2" className="bot-icon" />
+                <img
+                  src={bot2Data.icon}
+                  alt="bot 2"
+                  className="bot-icon"
+                  style={{ zIndex: bot2Data.hasLost ? 0 : 1 }}
+                />
               )
             );
           case `${bot3Data.x.toString()},${bot3Data.y.toString()}`:
             return (
               !bot3Data.hasLost && (
-                <img src={bot3Data.icon} alt="bot 3" className="bot-icon" />
+                <img
+                  src={bot3Data.icon}
+                  alt="bot 3"
+                  className="bot-icon"
+                  style={{ zIndex: bot3Data.hasLost ? 0 : 1 }}
+                />
               )
             );
           case `${bot4Data.x.toString()},${bot4Data.y.toString()}`:
             return (
               !bot4Data.hasLost && (
-                <img src={bot4Data.icon} alt="bot 4" className="bot-icon" />
+                <img
+                  src={bot4Data.icon}
+                  alt="bot 4"
+                  className="bot-icon"
+                  style={{ zIndex: bot4Data.hasLost ? 0 : 1 }}
+                />
               )
             );
           default:
@@ -135,7 +156,6 @@ const GameBoard = ({ boardSize }) => {
       }
 
       if (hasMatchingBots) {
-        //console.log(bot1,bot2);
         //bots will only battle if both haven't lost yet
         if (!bot1.hasLost && !bot2.hasLost) {
           calculateOutcome(bot1, bot2, operation);
