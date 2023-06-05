@@ -42,7 +42,7 @@ const GameBoard = ({ boardSize }) => {
                   src={bot1Data.icon}
                   alt="bot 1"
                   className="bot-icon"
-                  style={{ zIndex: bot1Data.hasLost ? 0 : 1 }}
+                  style={{ zIndex: bot1Data.hasLost ? -10 : 1 }}
                 />
               )
             );
@@ -53,7 +53,7 @@ const GameBoard = ({ boardSize }) => {
                   src={bot2Data.icon}
                   alt="bot 2"
                   className="bot-icon"
-                  style={{ zIndex: bot2Data.hasLost ? 0 : 1 }}
+                  style={{ zIndex: bot2Data.hasLost ? -10 : 1 }}
                 />
               )
             );
@@ -64,7 +64,7 @@ const GameBoard = ({ boardSize }) => {
                   src={bot3Data.icon}
                   alt="bot 3"
                   className="bot-icon"
-                  style={{ zIndex: bot3Data.hasLost ? 0 : 1 }}
+                  style={{ zIndex: bot3Data.hasLost ? -10 : 1 }}
                 />
               )
             );
@@ -75,7 +75,7 @@ const GameBoard = ({ boardSize }) => {
                   src={bot4Data.icon}
                   alt="bot 4"
                   className="bot-icon"
-                  style={{ zIndex: bot4Data.hasLost ? 0 : 1 }}
+                  style={{ zIndex: bot4Data.hasLost ? -10 : 1 }}
                 />
               )
             );
