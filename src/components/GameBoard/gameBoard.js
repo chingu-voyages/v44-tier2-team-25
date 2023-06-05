@@ -69,10 +69,19 @@ const GameBoard = ({ boardSize }) => {
   const [isFirst, setIsFirst] = useState(true);
   useInterval(() => {
     if (gameStatus) {
-      setBot1Data(moveBots(bot1Data));
-      setBot2Data(moveBots(bot2Data));
-      setBot3Data(moveBots(bot3Data));
-      setBot4Data(moveBots(bot4Data));
+      //Bots will only move if they haven't lost yet
+      if (!bot1Data.hasLost) {
+        setBot1Data(moveBots(bot1Data));
+      }
+      if (!bot2Data.hasLost) {
+        setBot2Data(moveBots(bot2Data));
+      }
+      if (!bot3Data.hasLost) {
+        setBot3Data(moveBots(bot3Data));
+      }
+      if (!bot4Data.hasLost) {
+        setBot4Data(moveBots(bot4Data));
+      }
       battle();
       function moveBots(botData) {
         const directions = ["north", "south", "west", "east"];
@@ -127,7 +136,8 @@ const GameBoard = ({ boardSize }) => {
 
       if (hasMatchingBots) {
         //console.log(bot1,bot2);
-        if (!bot1.hasLost && !bot2.hasLost) { //bots will only battle if both haven't lost yet
+        //bots will only battle if both haven't lost yet
+        if (!bot1.hasLost && !bot2.hasLost) {
           calculateOutcome(bot1, bot2, operation);
         }
         // battle function
