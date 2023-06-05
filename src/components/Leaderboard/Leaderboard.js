@@ -20,6 +20,10 @@ function Leaderboard({ battleResults }) {
     return gameResults.filter((result) => result === `winner: ${botName.name}`)
       .length;
   };
+  const addTies = (botName) => {
+    return gameResults.filter((result) => result === `tie: ${botName.name}`)
+      .length;
+  };
 
   // const gameLosers = gameResults.filter
   console.log(gameResults);
@@ -28,24 +32,28 @@ function Leaderboard({ battleResults }) {
       id: bot1Data.id,
       name: bot1Data.name,
       wins: addWins(bot1Data),
+      ties: addTies(bot1Data),
       setStateFunction: setBot1Data,
     },
     {
       id: bot2Data.id,
       name: bot2Data.name,
       wins: addWins(bot2Data),
+      ties: addTies(bot2Data),
       setStateFunction: setBot2Data,
     },
     {
       id: bot3Data.id,
       name: bot3Data.name,
       wins: addWins(bot3Data),
+      ties: addTies(bot3Data),
       setStateFunction: setBot3Data,
     },
     {
       id: bot4Data.id,
       name: bot4Data.name,
       wins: addWins(bot4Data),
+      ties: addTies(bot4Data),
       setStateFunction: setBot4Data,
     },
   ];
@@ -69,6 +77,7 @@ function Leaderboard({ battleResults }) {
       <div className="header">
         <div className="col">Name</div>
         <div className="col">Wins</div>
+        <div className="col">Ties</div>
       </div>
       {sortedResults.map((gameBot, index) => {
         return (
@@ -77,6 +86,7 @@ function Leaderboard({ battleResults }) {
               {gameBot.name.length === 0 ? "Name Your Bot!" : gameBot.name}
             </div>
             <div className="col-positions">{gameBot.wins}</div>
+            <div className="col-positions">{gameBot.ties}</div>
           </div>
         );
       })}
