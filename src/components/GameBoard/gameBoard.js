@@ -42,8 +42,7 @@ const GameBoard = ({ boardSize }) => {
                 <img
                   src={bot1Data.icon}
                   alt="bot 1"
-                  className="bot-icon"
-                  style={{ zIndex: bot1Data.hasLost ? -10 : 1 }}
+                  className={`bot-icon ${bot1Data.hasLost ? "lost-game" : ""}`}
                 />
               )
             );
@@ -53,8 +52,7 @@ const GameBoard = ({ boardSize }) => {
                 <img
                   src={bot2Data.icon}
                   alt="bot 2"
-                  className="bot-icon"
-                  style={{ zIndex: bot2Data.hasLost ? -10 : 1 }}
+                  className={`bot-icon ${bot2Data.hasLost ? "lost-game" : ""}`}
                 />
               )
             );
@@ -64,8 +62,7 @@ const GameBoard = ({ boardSize }) => {
                 <img
                   src={bot3Data.icon}
                   alt="bot 3"
-                  className="bot-icon"
-                  style={{ zIndex: bot3Data.hasLost ? -10 : 1 }}
+                  className={`bot-icon ${bot3Data.hasLost ? "lost-game" : ""}`}
                 />
               )
             );
@@ -75,8 +72,7 @@ const GameBoard = ({ boardSize }) => {
                 <img
                   src={bot4Data.icon}
                   alt="bot 4"
-                  className="bot-icon"
-                  style={{ zIndex: bot4Data.hasLost ? -10 : 1 }}
+                  className={`bot-icon ${bot4Data.hasLost ? "lost-game" : ""}`}
                 />
               )
             );
@@ -251,7 +247,7 @@ const GameBoard = ({ boardSize }) => {
       {gameStatus === true && (
         <Button
           colorScheme="teal"
-          variant='outline'
+          variant="outline"
           size="lg"
           className="pause btn"
           onClick={() => {
@@ -266,7 +262,6 @@ const GameBoard = ({ boardSize }) => {
           colorScheme="teal"
           size="lg"
           className="battle btn"
-         
           onClick={() => {
             setGameStatus(true);
           }}
