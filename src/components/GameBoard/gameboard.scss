@@ -2,19 +2,44 @@
 
 .game-board {
   display: inline-grid;
-  gap: 1px;
-  padding: 50px 0;
+  gap: 2px;
+
+  border-radius: 5px;
 }
 
 .tile {
-  border: 1px solid black;
-  width: 80px;
-  height: 80px;
+  
+  background-color: #CEE6E6;
+
+  margin: 2px;
+  border-radius: 5px;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bot-icon{
+  height: 60px;
+  width: 50px;
+
 }
 
 .board-container {
+  
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 40px 10px 40px 10px;
+ 
+  border: 1px solid ridge;
+}
+
+.btn {
+  margin-top: 10px;
+  width: 140px;
 }
 
 .bot-icon {
