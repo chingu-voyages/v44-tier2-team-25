@@ -31,6 +31,11 @@ const GameBoard = ({ boardSize }) => {
     }
   }
 
+  //Enable Battle button
+
+  const allBotOnBoard = [bot1Data, bot2Data, bot3Data, bot4Data].filter((bot) => bot.name).length   
+  const activeBots = [bot1Data, bot2Data, bot3Data, bot4Data].filter((bot) => !bot.hasLost).length
+
   const gameBoard = board.map((tile) => (
     <div className="tile" id={tile} key={tile}>
       {(() => {
@@ -39,41 +44,57 @@ const GameBoard = ({ boardSize }) => {
           case `${bot1Data.x.toString()},${bot1Data.y.toString()}`:
             return (
               !bot1Data.hasLost && (
+                <>
                 <img
                   src={bot1Data.icon}
                   alt="bot 1"
                   className={`bot-icon ${bot1Data.hasLost ? "lost-game" : ""}`}
                 />
+                <p className="bot-name">{bot1Data.name}</p>
+                </>
               )
             );
           case `${bot2Data.x.toString()},${bot2Data.y.toString()}`:
             return (
               !bot2Data.hasLost && (
+                <>
                 <img
                   src={bot2Data.icon}
                   alt="bot 2"
                   className={`bot-icon ${bot2Data.hasLost ? "lost-game" : ""}`}
+                  name={bot2Data.name}
                 />
+                <p className="bot-name">{bot2Data.name}</p>
+                </>
               )
+              
             );
           case `${bot3Data.x.toString()},${bot3Data.y.toString()}`:
             return (
               !bot3Data.hasLost && (
+                <>
                 <img
                   src={bot3Data.icon}
                   alt="bot 3"
                   className={`bot-icon ${bot3Data.hasLost ? "lost-game" : ""}`}
+                  name={bot3Data.name}
                 />
+                <p className="bot-name">{bot3Data.name}</p>
+                </>
               )
             );
           case `${bot4Data.x.toString()},${bot4Data.y.toString()}`:
             return (
               !bot4Data.hasLost && (
+                <>
                 <img
                   src={bot4Data.icon}
                   alt="bot 4"
                   className={`bot-icon ${bot4Data.hasLost ? "lost-game" : ""}`}
+                  name={bot4Data.name}
                 />
+                <p className="bot-name">{bot4Data.name}</p>
+              </>
               )
             );
           default:
@@ -101,6 +122,15 @@ const GameBoard = ({ boardSize }) => {
         setBot4Data(moveBots(bot4Data));
       }
       battle();
+
+      //Stop the game if there is only one bot left
+
+      if (activeBots === 1){
+        setGameStatus(false)
+      }
+
+
+
       function moveBots(botData) {
         const directions = ["north", "south", "west", "east"];
         let direction;
@@ -265,6 +295,7 @@ const GameBoard = ({ boardSize }) => {
           onClick={() => {
             setGameStatus(true);
           }}
+          isDisabled={allBotOnBoard !== 4 ? true : activeBots === 1 ? true : false}
         >
           Battle!
         </Button>

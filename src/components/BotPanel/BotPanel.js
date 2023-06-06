@@ -66,8 +66,9 @@ const BotPanel = ({ botData, setBotData }) => {
       <input
         type="text"
         id="bot-name"
-        placeholder="name your bot"
+        placeholder="Name your Bot"
         name="name"
+        maxlength="10"
         value={botData.name}
         onChange={handleInputChange}
         onBlur={() => handleDuplicateName(botData.name)} 

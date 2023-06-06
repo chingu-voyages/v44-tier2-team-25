@@ -37,7 +37,7 @@ function Speedops() {
           <option value="AND">AND</option>
           <option value="OR">OR</option>
           <option value="XOR">XOR</option>
-          <option value="NOT">NOT</option>
+          <option value="NOR">NOR</option>
         </Select>
       </Box>
     </Box>
