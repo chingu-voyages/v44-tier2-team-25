@@ -3,13 +3,11 @@
 .game-board {
   display: inline-grid;
   gap: 2px;
-
   border-radius: 5px;
 }
 
 .tile {
   background-color: #cee6e6;
-
   margin: 2px;
   border-radius: 5px;
   width: 75px;
@@ -21,6 +19,7 @@
 .bot-icon {
   height: 60px;
   width: 50px;
+  position: relative;
 }
 
 .board-container {
@@ -39,10 +38,6 @@
   width: 140px;
 }
 
-.bot-icon {
-  position: relative;
-}
-
 .lost-game {
-  z-index: -10;
+  display: hidden;
 }
