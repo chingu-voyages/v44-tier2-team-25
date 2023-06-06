@@ -1,7 +1,15 @@
 import React, { useState, useContext } from "react";
 import { BotDataContext, AppContext } from "../../App.js";
-import { Button } from "@chakra-ui/react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import "./gameboard.scss";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaUsersCog,
+  FaUsersSlash,
+  FaPlay,
+  FaPause,
+} from "react-icons/fa";
 
 import useInterval from "../../useInterval";
 
@@ -16,12 +24,13 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
-   // wins,
+    // wins,
     setWins,
     operation,
   } = useContext(BotDataContext);
 
-  const { showLeaderboard, setShowLeaderboard, showPanel, setShowPanel } = useContext(AppContext);
+  const { showLeaderboard, setShowLeaderboard, showPanel, setShowPanel } =
+    useContext(AppContext);
 
   //State for whether the game should play out or not
   const [gameStatus, setGameStatus] = useState(false);
@@ -194,39 +203,40 @@ const GameBoard = ({ boardSize }) => {
         {gameBoard}
       </div>
 
-      {gameStatus === true && (
+      <ButtonGroup spacing={2} m={4}>
         <Button
+          rightIcon={showPanel ? <FaUsersSlash /> : <FaUsersCog />}
           colorScheme="teal"
           variant="outline"
           size="lg"
-          className="pause btn"
-          onClick={() => {
-            setGameStatus(false);
-          }}
+          onClick={() => setShowPanel(!showPanel)}
         >
-          Pause
+          Panel
         </Button>
-      )}
-      {gameStatus === false && (
+
         <Button
+          rightIcon={gameStatus ? <FaPlay /> : <FaPause />}
           colorScheme="teal"
           size="lg"
-          className="battle btn"
+          variant="solid"
           onClick={() => {
-            setGameStatus(true);
+            setGameStatus(!gameStatus);
           }}
         >
-          Battle!
+          {gameStatus ? "Battle" : "Pause"}
         </Button>
-      )}
 
-      <button onClick={() => setShowLeaderboard(!showLeaderboard)}>
-        {showLeaderboard ? "Close Leaderboard" : "Show Leaderboard"}
-      </button>
+        <Button
+          rightIcon={showLeaderboard ? <FaEyeSlash /> : <FaEye />}
+          colorScheme="teal"
+          variant="outline"
+          size="lg"
+          onClick={() => setShowLeaderboard(!showLeaderboard)}
+        >
+          Ranking
+        </Button>
 
-      <button onClick={() => setShowPanel(!showPanel)}>
-        {showPanel ? "Close Panel" : "Show Panel"}
-      </button>
+      </ButtonGroup>
     </div>
   );
 };
