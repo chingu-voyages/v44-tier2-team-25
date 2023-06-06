@@ -236,7 +236,7 @@ const GameBoard = ({ boardSize }) => {
     setGameResults((prevWins) => [
       ...prevWins,
       battleWinner !== undefined ? battleWinner : battleTie[0],
-      battleLoser !== undefined ? battleLoser : battleTie[[0]],
+      battleLoser !== undefined ? battleLoser : battleTie[1],
     ]);
   }
 
