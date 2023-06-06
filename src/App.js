@@ -89,7 +89,7 @@ function App() {
               </p>
               <p>
                 Next, set the speed and the operation that will be applied to
-                all of the bots. Begin to game to see which bot wins!
+                all of the bots. Begin the game to see which bot wins!
               </p>
             </ModalBody>
             <ModalFooter>
@@ -124,14 +124,12 @@ function App() {
               <Heading as="h3" size="md" className="panel-heading">
                 Configuration Panel
               </Heading>
-              <Heading
-                as="h4"
-                size="sm"
+              <Button
                 className="instructions-opener"
                 onClick={() => setShowInstructions(true)}
               >
                 Need Help?
-              </Heading>
+              </Button>
               <ConfigPanel />
               <Speedops />
               <Leaderboard />
