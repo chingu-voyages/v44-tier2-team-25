@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { BotDataContext } from "../../App.js";
+import { BotDataContext, AppContext } from "../../App.js";
 import { Button } from "@chakra-ui/react";
 import "./gameboard.scss";
 
@@ -20,6 +20,8 @@ const GameBoard = ({ boardSize }) => {
     setWins,
     operation,
   } = useContext(BotDataContext);
+
+  const { showLeaderboard, setShowLeaderboard, showPanel, setShowPanel } = useContext(AppContext);
 
   //State for whether the game should play out or not
   const [gameStatus, setGameStatus] = useState(false);
@@ -195,7 +197,7 @@ const GameBoard = ({ boardSize }) => {
       {gameStatus === true && (
         <Button
           colorScheme="teal"
-          variant='outline'
+          variant="outline"
           size="lg"
           className="pause btn"
           onClick={() => {
@@ -210,7 +212,6 @@ const GameBoard = ({ boardSize }) => {
           colorScheme="teal"
           size="lg"
           className="battle btn"
-         
           onClick={() => {
             setGameStatus(true);
           }}
@@ -218,6 +219,14 @@ const GameBoard = ({ boardSize }) => {
           Battle!
         </Button>
       )}
+
+      <button onClick={() => setShowLeaderboard(!showLeaderboard)}>
+        {showLeaderboard ? "Close Leaderboard" : "Show Leaderboard"}
+      </button>
+
+      <button onClick={() => setShowPanel(!showPanel)}>
+        {showPanel ? "Close Panel" : "Show Panel"}
+      </button>
     </div>
   );
 };
