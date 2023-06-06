@@ -82,11 +82,11 @@ function Leaderboard({ battleResults }) {
       {sortedResults.map((gameBot, index) => {
         return (
           <div key={gameBot.id} className="row">
-            <div className="col-ranking">
+            <div className="col-name">
               {gameBot.name.length === 0 ? "Name Your Bot!" : gameBot.name}
             </div>
-            <div className="col-positions">{gameBot.wins}</div>
-            <div className="col-positions">{gameBot.ties}</div>
+            <div className="col-wins">{gameBot.wins}</div>
+            <div className="col-ties">{gameBot.ties}</div>
           </div>
         );
       })}
