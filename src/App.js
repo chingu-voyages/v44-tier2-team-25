@@ -74,6 +74,7 @@ function App() {
         <Modal
           isOpen={showInstructions}
           onClose={() => setShowInstructions(false)}
+          isCentered
         >
           <ModalOverlay />
           <ModalContent>
