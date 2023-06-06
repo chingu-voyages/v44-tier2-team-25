@@ -1,24 +1,41 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 * {
-    font-family: $font-primary;
+  font-family: $font-primary;
 }
 
-.main-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #F0F0F0;
-    padding: 40px 0 40px 0;
+.main-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 40px 0 40px 0;
 }
 
-.panels-container{
-    background-color: white;
-    padding: 30px 15px 30px 15px;
+.panels-container {
+  background-color: white;
+  padding: 30px 15px 30px 15px;
 }
 
-.panel-heading{
-    text-align: center;
-    margin-bottom: 20px;
+.panel-heading {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.instructions-opener {
+  text-align: center;
+  margin-bottom: 15px;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.instructions-title {
+  text-align: center;
+}
+
+.instructions-description {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
