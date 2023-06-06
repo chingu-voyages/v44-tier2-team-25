@@ -1,5 +1,16 @@
 import React, { useState, createContext } from "react";
-import { ChakraProvider, Heading } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  Heading,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  ModalCloseButton,
+  Button,
+} from "@chakra-ui/react";
 import Leaderboard from "./components/Leaderboard/Leaderboard";
 import ConfigPanel from "./components/ConfigPanel/ConfigPanel";
 import "./styles/global.scss";
@@ -17,7 +28,7 @@ function App() {
   // Speed_Operation
   const [speed, setSpeed] = useState(1000);
   const [operation, setOperation] = useState("AND");
-
+  const [showInstructions, setShowInstructions] = useState(true);
   const [wins, setWins] = useState([]); // Initializi the wins state for results array
   //state for 4 botdata
   const [bot1Data, setBot1Data] = useState({
@@ -60,6 +71,34 @@ function App() {
   return (
     <div className="App">
       <ChakraProvider>
+        <Modal
+          isOpen={showInstructions}
+          onClose={() => setShowInstructions(false)}
+        >
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader className="instructions-title">
+              What is Boolebots?
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody className="instructions-description">
+              <p>
+                Boolebots is an exciting game based on the concept of the
+                Boolean! To begin the game, first name your four bots and assign
+                them a direction and boolean value.
+              </p>
+              <p>
+                Next, set the speed and the operation that will be applied to
+                all of the bots. Begin to game to see which bot wins!
+              </p>
+            </ModalBody>
+            <ModalFooter>
+              <Button onClick={() => setShowInstructions(false)}>
+                Got it!
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
         <Header />
         <div className="main-container">
           <BotDataContext.Provider
@@ -78,11 +117,20 @@ function App() {
               setOperation,
               wins,
               setWins,
+              setShowInstructions,
             }}
           >
             <div className="panels-container">
               <Heading as="h3" size="md" className="panel-heading">
                 Configuration Panel
+              </Heading>
+              <Heading
+                as="h4"
+                size="sm"
+                className="instructions-opener"
+                onClick={() => setShowInstructions(true)}
+              >
+                Need Help?
               </Heading>
               <ConfigPanel />
               <Speedops />
