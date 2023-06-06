@@ -82,25 +82,28 @@ const GameBoard = ({ boardSize }) => {
       })()}
     </div>
   ));
-
   // handles random bot movement
   const [isFirst, setIsFirst] = useState(true);
   useInterval(() => {
     if (gameStatus) {
       //Bots will only move if they haven't lost yet
-      if (!bot1Data.hasLost) {
-        setBot1Data(moveBots(bot1Data));
-      }
-      if (!bot2Data.hasLost) {
-        setBot2Data(moveBots(bot2Data));
-      }
-      if (!bot3Data.hasLost) {
-        setBot3Data(moveBots(bot3Data));
-      }
-      if (!bot4Data.hasLost) {
-        setBot4Data(moveBots(bot4Data));
-      }
+      setBot1Data(
+        !bot1Data.hasLost ? moveBots(bot1Data) : removeBots(bot1Data)
+      );
+      setBot2Data(
+        !bot2Data.hasLost ? moveBots(bot2Data) : removeBots(bot2Data)
+      );
+      setBot3Data(
+        !bot3Data.hasLost ? moveBots(bot3Data) : removeBots(bot3Data)
+      );
+      setBot4Data(
+        !bot4Data.hasLost ? moveBots(bot4Data) : removeBots(bot4Data)
+      );
+
       battle();
+      function removeBots(botData) {
+        return { ...botData, x: 1000, y: 1000 };
+      }
       function moveBots(botData) {
         const directions = ["north", "south", "west", "east"];
         let direction;
