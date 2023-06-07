@@ -42,6 +42,11 @@ const GameBoard = ({ boardSize }) => {
     }
   }
 
+  //Enable Battle button
+
+  const allBotOnBoard = [bot1Data, bot2Data, bot3Data, bot4Data].filter((bot) => bot.name).length   
+  const activeBots = [bot1Data, bot2Data, bot3Data, bot4Data].filter((bot) => !bot.hasLost).length
+
   const gameBoard = board.map((tile) => (
     <div className="tile" id={tile} key={tile}>
       {(() => {
@@ -86,6 +91,7 @@ const GameBoard = ({ boardSize }) => {
                   />
                 </Tooltip>
               )
+              
             );
           case `${bot3Data.x.toString()},${bot3Data.y.toString()}`:
             return (
@@ -155,6 +161,15 @@ const GameBoard = ({ boardSize }) => {
       function removeBots(botData) {
         return { ...botData, x: 1000, y: 1000 };
       }
+
+      //Stop the game if there is only one bot left
+
+      if (activeBots === 1){
+        setGameStatus(false)
+      }
+
+
+
       function moveBots(botData) {
         const directions = ["north", "south", "west", "east"];
         let direction;
@@ -323,6 +338,7 @@ const GameBoard = ({ boardSize }) => {
           onClick={() => {
             setGameStatus(!gameStatus);
           }}
+          isDisabled={allBotOnBoard !== 4 ? true : activeBots === 1 ? true : false}
         >
           {gameStatus ? "Pause" : "Battle"}
         </Button>

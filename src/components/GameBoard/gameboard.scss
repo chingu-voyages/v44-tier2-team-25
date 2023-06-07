@@ -8,13 +8,14 @@
 
 .tile {
   background-color: #cee6e6;
-  margin: 2px;
-  border-radius: 5px;
-  width: 75px;
-  height: 75px;
+  margin: 0.3px;
+  border-radius: 3px;
+  width: 80px;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  display: inline-block;
 }
 .bot-icon {
   height: 60px;
@@ -28,8 +29,7 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  padding: 40px 10px 40px 10px;
-
+  padding: 30px;
   border: 1px solid ridge;
 }
 
@@ -40,8 +40,16 @@
 
 .lost-game {
   display: hidden;
+  height: 55px;
+  margin: 2px 2px 0px 12px;
 }
 
 .lost-game {
   display: hidden;
+}
+
+.bot-name{
+  color: rgb(100, 100, 100);
+  margin-top: 0px;
+  text-align: center;
 }
