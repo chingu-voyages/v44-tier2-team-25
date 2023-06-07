@@ -19,7 +19,7 @@ function App() {
   const [speed, setSpeed] = useState(1000);
   const [operation, setOperation] = useState("AND");
 
-  const [wins, setWins] = useState([]); // Initializi the wins state for results array
+  const [gameResults, setGameResults] = useState([]); // Initializi the wins state for results array
   //state for 4 botdata
   const [bot1Data, setBot1Data] = useState({
     id: 1,
@@ -29,6 +29,7 @@ function App() {
     x: 0,
     y: 0,
     icon: "./bot1.gif",
+    hasLost: false,
   });
   const [bot2Data, setBot2Data] = useState({
     id: 2,
@@ -38,6 +39,7 @@ function App() {
     x: 0,
     y: 0,
     icon: "./bot2.gif",
+    hasLost: false,
   });
   const [bot3Data, setBot3Data] = useState({
     id: 3,
@@ -47,6 +49,7 @@ function App() {
     x: 0,
     y: 0,
     icon: "./bot3.gif",
+    hasLost: false,
   });
   const [bot4Data, setBot4Data] = useState({
     id: 4,
@@ -56,6 +59,7 @@ function App() {
     x: 0,
     y: 0,
     icon: "./bot4.gif",
+    hasLost: false,
   });
 
   const [showLeaderboard, setShowLeaderboard] = useState(false);
@@ -80,8 +84,8 @@ function App() {
               setSpeed,
               operation,
               setOperation,
-              wins,
-              setWins,
+              gameResults,
+              setGameResults,
             }}
           >
             <AppContext.Provider

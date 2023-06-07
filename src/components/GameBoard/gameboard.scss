@@ -3,14 +3,11 @@
 .game-board {
   display: inline-grid;
   gap: 2px;
-
   border-radius: 5px;
 }
 
 .tile {
-  
-  background-color: #CEE6E6;
-
+  background-color: #cee6e6;
   margin: 2px;
   border-radius: 5px;
   width: 75px;
@@ -19,25 +16,32 @@
   justify-content: center;
   align-items: center;
 }
-.bot-icon{
+.bot-icon {
   height: 60px;
   width: 50px;
-
+  position: relative;
 }
 
 .board-container {
-  
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   background-color: white;
   padding: 40px 10px 40px 10px;
- 
+
   border: 1px solid ridge;
 }
 
-// .btn {
-//   margin-top: 10px;
-//   width: 140px;
-// }
+.btn {
+  margin-top: 10px;
+  width: 140px;
+}
+
+.lost-game {
+  display: hidden;
+}
+
+.lost-game {
+  display: hidden;
+}

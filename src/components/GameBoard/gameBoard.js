@@ -24,8 +24,7 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
-    // wins,
-    setWins,
+    setGameResults,
     operation,
   } = useContext(BotDataContext);
 
@@ -46,30 +45,87 @@ const GameBoard = ({ boardSize }) => {
   const gameBoard = board.map((tile) => (
     <div className="tile" id={tile} key={tile}>
       {(() => {
+        //Bots will be disabled and unrendered when hasLost is true
         switch (tile) {
           case `${bot1Data.x.toString()},${bot1Data.y.toString()}`:
             return (
-              <Tooltip placement="auto" bg="orange" fontSize='xs' label={bot1Data.name} isOpen>
-                <img src={bot1Data.icon} alt="bot 1" className="bot-icon" />
-              </Tooltip>
+              !bot1Data.hasLost && (
+                <Tooltip
+                  placement="auto"
+                  bg="orange"
+                  fontSize="xs"
+                  label={bot1Data.name}
+                  isOpen
+                >
+                  <img
+                    src={bot1Data.icon}
+                    alt="bot 1"
+                    className={`bot-icon ${
+                      bot1Data.hasLost ? "lost-game" : ""
+                    }`}
+                  />
+                </Tooltip>
+              )
             );
           case `${bot2Data.x.toString()},${bot2Data.y.toString()}`:
             return (
-              <Tooltip placement="auto" bg="green.500" fontSize='xs' label={bot2Data.name} isOpen>
-                <img src={bot2Data.icon} alt="bot 2" className="bot-icon" />
-              </Tooltip>
+              !bot2Data.hasLost && (
+                <Tooltip
+                  placement="auto"
+                  bg="green.500"
+                  fontSize="xs"
+                  label={bot2Data.name}
+                  isOpen
+                >
+                  <img
+                    src={bot2Data.icon}
+                    alt="bot 2"
+                    className={`bot-icon ${
+                      bot2Data.hasLost ? "lost-game" : ""
+                    }`}
+                  />
+                </Tooltip>
+              )
             );
           case `${bot3Data.x.toString()},${bot3Data.y.toString()}`:
             return (
-              <Tooltip placement="auto" bg="cyan.600" fontSize='xs' label={bot3Data.name} isOpen>
-                <img src={bot3Data.icon} alt="bot 3" className="bot-icon" />
-              </Tooltip>
+              !bot3Data.hasLost && (
+                <Tooltip
+                  placement="auto"
+                  bg="cyan.600"
+                  fontSize="xs"
+                  label={bot3Data.name}
+                  isOpen
+                >
+                  <img
+                    src={bot3Data.icon}
+                    alt="bot 3"
+                    className={`bot-icon ${
+                      bot3Data.hasLost ? "lost-game" : ""
+                    }`}
+                  />
+                </Tooltip>
+              )
             );
           case `${bot4Data.x.toString()},${bot4Data.y.toString()}`:
             return (
-              <Tooltip placement="auto" bg="purple" fontSize='xs' label={bot4Data.name} isOpen>
-                <img src={bot4Data.icon} alt="bot 4" className="bot-icon" />
-              </Tooltip>
+              !bot4Data.hasLost && (
+                <Tooltip
+                  placement="auto"
+                  bg="purple"
+                  fontSize="xs"
+                  label={bot4Data.name}
+                  isOpen
+                >
+                  <img
+                    src={bot4Data.icon}
+                    alt="bot 4"
+                    className={`bot-icon ${
+                      bot4Data.hasLost ? "lost-game" : ""
+                    }`}
+                  />
+                </Tooltip>
+              )
             );
           default:
             return null;
@@ -77,16 +133,28 @@ const GameBoard = ({ boardSize }) => {
       })()}
     </div>
   ));
-
   // handles random bot movement
   const [isFirst, setIsFirst] = useState(true);
   useInterval(() => {
     if (gameStatus) {
-      setBot1Data(moveBots(bot1Data));
-      setBot2Data(moveBots(bot2Data));
-      setBot3Data(moveBots(bot3Data));
-      setBot4Data(moveBots(bot4Data));
+      //Bots will only move if they haven't lost yet
+      setBot1Data(
+        !bot1Data.hasLost ? moveBots(bot1Data) : removeBots(bot1Data)
+      );
+      setBot2Data(
+        !bot2Data.hasLost ? moveBots(bot2Data) : removeBots(bot2Data)
+      );
+      setBot3Data(
+        !bot3Data.hasLost ? moveBots(bot3Data) : removeBots(bot3Data)
+      );
+      setBot4Data(
+        !bot4Data.hasLost ? moveBots(bot4Data) : removeBots(bot4Data)
+      );
+
       battle();
+      function removeBots(botData) {
+        return { ...botData, x: 1000, y: 1000 };
+      }
       function moveBots(botData) {
         const directions = ["north", "south", "west", "east"];
         let direction;
@@ -139,8 +207,10 @@ const GameBoard = ({ boardSize }) => {
       }
 
       if (hasMatchingBots) {
-        //console.log(bot1,bot2);
-        calculateOutcome(bot1, bot2, operation);
+        //bots will only battle if both haven't lost yet
+        if (!bot1.hasLost && !bot2.hasLost) {
+          calculateOutcome(bot1, bot2, operation);
+        }
         // battle function
         break;
       }
@@ -153,12 +223,17 @@ const GameBoard = ({ boardSize }) => {
   //randomly assign winner from the 2 colliding bots
   const chooseRandomBot = (botA, botB) => {
     const randomIndex = Math.floor(Math.random() * 2);
-    return randomIndex === 0 ? botA : botB;
+    return {
+      winner: randomIndex === 0 ? botA : botB,
+      loser: randomIndex === 0 ? botB : botA,
+    };
   };
 
   //check if there's a win or tie from operation, if win, assign winner with the random function
   function calculateOutcome(botA, botB, operator) {
-    let result;
+    let battleResult;
+    let battleLoser;
+    let battleWinner;
     let value1 = botA.boolean;
     let value2 = botB.boolean;
     console.log(value1, value2, operator);
@@ -167,19 +242,21 @@ const GameBoard = ({ boardSize }) => {
       case "AND":
         if (value1 === "1" && value2 === "1") {
           // if both are 1(high)
-          const winner = chooseRandomBot(botA, botB);
-          result = `winner: ${winner.name}`;
+          battleResult = chooseRandomBot(botA, botB);
+          battleWinner = `winner: ${battleResult.winner.name}`;
+          battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          result = "Tie";
+          battleWinner = "Tie";
         }
         break;
       case "OR":
         if (value1 === "1" || value2 === "1") {
           // only a tie if both are 0(low)
-          const winner = chooseRandomBot(botA, botB);
-          result = `winner: ${winner.name}`;
+          battleResult = chooseRandomBot(botA, botB);
+          battleWinner = `winner: ${battleResult.winner.name}`;
+          battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          result = "Tie";
+          battleWinner = "Tie";
         }
         break;
       case "XOR":
@@ -188,26 +265,28 @@ const GameBoard = ({ boardSize }) => {
           (value1 === "0" && value2 === "1")
         ) {
           // if they are uneven
-          const winner = chooseRandomBot(botA, botB);
-          result = `winner: ${winner.name}`;
+          battleResult = chooseRandomBot(botA, botB);
+          battleWinner = `winner: ${battleResult.winner.name}`;
+          battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          result = "Tie";
+          battleWinner = "Tie";
         }
         break;
       case "NOR":
         if (value1 === "0" && value2 === "0") {
           // if neither is 1(high)
-          const winner = chooseRandomBot(botA, botB);
-          result = `winner: ${winner.name}`;
+          battleResult = chooseRandomBot(botA, botB);
+          battleWinner = `winner: ${battleResult.winner.name}`;
+          battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          result = "Tie";
+          battleWinner = "Tie";
         }
         break;
       default:
         return false; // not sure what the default should be
     }
 
-    setWins((prevWins) => [...prevWins, result]);
+    setGameResults((prevWins) => [...prevWins, battleWinner, battleLoser]);
   }
 
   return (
@@ -231,9 +310,10 @@ const GameBoard = ({ boardSize }) => {
         </Button>
 
         <Button
-          rightIcon={gameStatus ? <FaPause />  : <FaPlay /> }
+          rightIcon={gameStatus ? <FaPause /> : <FaPlay />}
           colorScheme="teal"
           size="lg"
+          className="battle btn"
           variant="solid"
           onClick={() => {
             setGameStatus(!gameStatus);
@@ -251,7 +331,6 @@ const GameBoard = ({ boardSize }) => {
         >
           Ranking
         </Button>
-
       </ButtonGroup>
     </div>
   );
