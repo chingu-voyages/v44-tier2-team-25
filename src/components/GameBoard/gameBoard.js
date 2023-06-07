@@ -10,7 +10,7 @@ import {
   FaPlay,
   FaPause,
 } from "react-icons/fa";
-
+import Stopwatch from "../Stopwatch/GameStopwatch.js";
 import useInterval from "../../useInterval";
 
 const GameBoard = ({ boardSize }) => {
@@ -291,6 +291,7 @@ const GameBoard = ({ boardSize }) => {
 
   return (
     <div className="board-container">
+      <Stopwatch />
       <div
         className="game-board"
         style={{ gridTemplateColumns: `repeat(${boardSize}, 1fr)` }}
