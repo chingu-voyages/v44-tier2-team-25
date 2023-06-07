@@ -3,7 +3,6 @@
 .game-board {
   display: inline-grid;
   gap: 2px;
-
   border-radius: 5px;
 }
 
@@ -21,6 +20,7 @@
 .bot-icon {
   height: 60px;
   width: 50px;
+  position: relative;
 }
 
 .board-container {
@@ -38,14 +38,14 @@
   width: 140px;
 }
 
-.bot-icon {
-  position: relative;
+.lost-game {
+  display: hidden;
   height: 55px;
   margin: 2px 2px 0px 12px;
 }
 
 .lost-game {
-  z-index: -10;
+  display: hidden;
 }
 
 .bot-name{
