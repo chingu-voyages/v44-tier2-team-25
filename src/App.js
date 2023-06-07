@@ -21,7 +21,7 @@ import Speedops from "./components/OperationPanel/Speedops";
 
 // Create a context for the data
 const BotDataContext = createContext();
-const AppContext = createContext(); 
+const AppContext = createContext();
 
 function App() {
   const boardSize = 8;
@@ -29,9 +29,8 @@ function App() {
   // Speed_Operation
   const [speed, setSpeed] = useState(1000);
   const [operation, setOperation] = useState("AND");
-
+  const [gameStatus, setGameStatus] = useState(false);
   const [showInstructions, setShowInstructions] = useState(true);
-
 
   const [gameResults, setGameResults] = useState([]); // Initializi the wins state for results array
   //state for 4 botdata
@@ -77,7 +76,7 @@ function App() {
   });
 
   const [showLeaderboard, setShowLeaderboard] = useState(false);
-  const [showPanel, setShowPanel] = useState(false); 
+  const [showPanel, setShowPanel] = useState(false);
 
   return (
     <div className="App">
@@ -130,6 +129,8 @@ function App() {
               setShowInstructions,
               gameResults,
               setGameResults,
+              gameStatus,
+              setGameStatus,
             }}
           >
             <AppContext.Provider
@@ -153,12 +154,12 @@ function App() {
                         Configuration Panel
                       </Heading>
                       <Button
-                className="instructions-opener"
-                onClick={() => setShowInstructions(true)}
-              >
-                Need Help?
-              </Button>
-              <ConfigPanel />
+                        className="instructions-opener"
+                        onClick={() => setShowInstructions(true)}
+                      >
+                        Need Help?
+                      </Button>
+                      <ConfigPanel />
                       <Speedops />
                     </div>
                   )}
@@ -188,5 +189,5 @@ function App() {
   );
 }
 
-export { BotDataContext, AppContext }
+export { BotDataContext, AppContext };
 export default App;
