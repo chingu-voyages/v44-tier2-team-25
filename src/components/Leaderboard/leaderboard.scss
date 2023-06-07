@@ -26,7 +26,6 @@
     align-items: center;
     color: $text-primary;
     flex: 1;
-    padding: 6px;
   }
 
   .col {
@@ -36,7 +35,7 @@
 
   .col-ranking {
     // flex: 4;
-    text-align: left;
+    padding: 6px 10px;
   }
 
   .col-battles {
