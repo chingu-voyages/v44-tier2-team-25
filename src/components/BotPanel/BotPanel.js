@@ -48,6 +48,18 @@ const BotPanel = ({ botData, setBotData }) => {
       return updatedData;
     });
   };
+
+  //toggle boolean value
+  const handleBoolean = () => {
+    const booleanValue = botData.boolean === "1" ? "0" : "1";
+    handleInputChange({
+      target: {
+        name: "boolean",
+        value: booleanValue,
+      },
+    });
+  };
+
   useEffect(() => {
     const botParameters =
       botData.x === 0 && botData.y === 0 && botData.name.length > 0;
@@ -97,11 +109,18 @@ const BotPanel = ({ botData, setBotData }) => {
       </select>
 
       <label htmlFor="bot-boolean" />
-      <select id="bot-boolean" name="boolean" onChange={handleInputChange}>
+      {/* <select id="bot-boolean" name="boolean" onChange={handleInputChange}>
         <option value="">value</option>
         <option value="1">1</option>
         <option value="0">0</option>
-      </select>
+      </select> */}
+      <div onClick={handleBoolean} id="bot-boolean" name="boolean"
+        className={`checkbox ${botData.boolean === "1" && "checkbox-on"}`}>
+        <div className="checkbox-ball"></div>
+        <span className="checkbox-text" name="boolean">
+          {botData.boolean === "1" ? "1" : "0"}
+        </span>
+      </div>
     </div>
   );
 };
