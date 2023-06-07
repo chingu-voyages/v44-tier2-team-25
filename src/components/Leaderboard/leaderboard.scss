@@ -7,7 +7,7 @@
   padding: 8px 24px 20px;
   background-color: $color-primary;
   border-radius: $min-size;
-  max-width: 390px;
+  min-width: 390px;
   font-size: 14px;
 
   .header {

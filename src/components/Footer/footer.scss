@@ -2,7 +2,7 @@
 
 .footer-component {
     background-color: $color-primary;
-    height: 102.4px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,9 +12,6 @@
 }
 
 @media (min-width: 390px) {
-    .footer-component {
-        height: 119.4px;
-    }
 
     .copyright,
     .repository {
@@ -23,7 +20,6 @@
     }
 
     .repository {
-        text-align: right;
 
         .link {
             display: flex;
@@ -35,10 +31,9 @@
 
 @media (max-width: 389px) {
     .footer-component {
-        height: 102.4px;
         display: flex;
         align-items: center;
-
+        justify-content: center;
     }
 
     .copyright,
