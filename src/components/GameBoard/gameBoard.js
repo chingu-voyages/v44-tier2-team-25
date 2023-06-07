@@ -1,7 +1,15 @@
 import React, { useState, useContext } from "react";
-import { BotDataContext } from "../../App.js";
-import { Button } from "@chakra-ui/react";
+import { BotDataContext, AppContext } from "../../App.js";
+import { Button, ButtonGroup, Tooltip } from "@chakra-ui/react";
 import "./gameboard.scss";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaUsersCog,
+  FaUsersSlash,
+  FaPlay,
+  FaPause,
+} from "react-icons/fa";
 
 import useInterval from "../../useInterval";
 
@@ -16,10 +24,13 @@ const GameBoard = ({ boardSize }) => {
     bot4Data,
     setBot4Data,
     speed,
-   // wins,
+    // wins,
     setWins,
     operation,
   } = useContext(BotDataContext);
+
+  const { showLeaderboard, setShowLeaderboard, showPanel, setShowPanel } =
+    useContext(AppContext);
 
   //State for whether the game should play out or not
   const [gameStatus, setGameStatus] = useState(false);
@@ -37,13 +48,29 @@ const GameBoard = ({ boardSize }) => {
       {(() => {
         switch (tile) {
           case `${bot1Data.x.toString()},${bot1Data.y.toString()}`:
-            return <img src={bot1Data.icon} alt="bot 1" className="bot-icon" />;
+            return (
+              <Tooltip placement="auto" bg="orange" fontSize='xs' label={bot1Data.name} isOpen>
+                <img src={bot1Data.icon} alt="bot 1" className="bot-icon" />
+              </Tooltip>
+            );
           case `${bot2Data.x.toString()},${bot2Data.y.toString()}`:
-            return <img src={bot2Data.icon} alt="bot 2" className="bot-icon" />;
+            return (
+              <Tooltip placement="auto" bg="green.500" fontSize='xs' label={bot2Data.name} isOpen>
+                <img src={bot2Data.icon} alt="bot 2" className="bot-icon" />
+              </Tooltip>
+            );
           case `${bot3Data.x.toString()},${bot3Data.y.toString()}`:
-            return <img src={bot3Data.icon} alt="bot 3" className="bot-icon" />;
+            return (
+              <Tooltip placement="auto" bg="cyan.600" fontSize='xs' label={bot3Data.name} isOpen>
+                <img src={bot3Data.icon} alt="bot 3" className="bot-icon" />
+              </Tooltip>
+            );
           case `${bot4Data.x.toString()},${bot4Data.y.toString()}`:
-            return <img src={bot4Data.icon} alt="bot 4" className="bot-icon" />;
+            return (
+              <Tooltip placement="auto" bg="purple" fontSize='xs' label={bot4Data.name} isOpen>
+                <img src={bot4Data.icon} alt="bot 4" className="bot-icon" />
+              </Tooltip>
+            );
           default:
             return null;
         }
@@ -192,32 +219,40 @@ const GameBoard = ({ boardSize }) => {
         {gameBoard}
       </div>
 
-      {gameStatus === true && (
+      <ButtonGroup spacing={2} m={4}>
         <Button
+          rightIcon={showPanel ? <FaUsersSlash /> : <FaUsersCog />}
           colorScheme="teal"
-          variant='outline'
+          variant="outline"
           size="lg"
-          className="pause btn"
-          onClick={() => {
-            setGameStatus(false);
-          }}
+          onClick={() => setShowPanel(!showPanel)}
         >
-          Pause
+          Panel
         </Button>
-      )}
-      {gameStatus === false && (
+
         <Button
+          rightIcon={gameStatus ? <FaPause />  : <FaPlay /> }
           colorScheme="teal"
           size="lg"
-          className="battle btn"
-         
+          variant="solid"
           onClick={() => {
-            setGameStatus(true);
+            setGameStatus(!gameStatus);
           }}
         >
-          Battle!
+          {gameStatus ? "Pause" : "Battle"}
         </Button>
-      )}
+
+        <Button
+          rightIcon={showLeaderboard ? <FaEyeSlash /> : <FaEye />}
+          colorScheme="teal"
+          variant="outline"
+          size="lg"
+          onClick={() => setShowLeaderboard(!showLeaderboard)}
+        >
+          Ranking
+        </Button>
+
+      </ButtonGroup>
     </div>
   );
 };

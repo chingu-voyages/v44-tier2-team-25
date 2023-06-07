@@ -35,7 +35,7 @@ const ConfigPanel = () => {
     <div className="config-panel">
       <div className="category-wrapper">
         <Grid templateColumns="1fr 1fr 1fr" templateRows="1fr" gap={4}>
-          <GridItem w="160px">
+          <GridItem w="180px">
             <h4>Name</h4>
           </GridItem>
           <GridItem w="80px">

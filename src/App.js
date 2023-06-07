@@ -10,6 +10,7 @@ import Speedops from "./components/OperationPanel/Speedops";
 
 // Create a context for the data
 const BotDataContext = createContext();
+const AppContext = createContext(); 
 
 function App() {
   const boardSize = 8;
@@ -57,6 +58,9 @@ function App() {
     icon: "./bot4.gif",
   });
 
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showPanel, setShowPanel] = useState(false); 
+
   return (
     <div className="App">
       <ChakraProvider>
@@ -80,23 +84,55 @@ function App() {
               setWins,
             }}
           >
-            <div className="panels-container">
-              <Heading as="h3" size="md" className="panel-heading">
-                Configuration Panel
-              </Heading>
-              <ConfigPanel />
-              <Speedops />
-              <Leaderboard />
-            </div>
+            <AppContext.Provider
+              value={{
+                showLeaderboard,
+                setShowLeaderboard,
+                showPanel,
+                setShowPanel,
+              }}
+            >
+              {showPanel | showLeaderboard ? (
+                <div className="panels-container">
+                  {showPanel && (
+                    <div className="config-box">
+                      <Heading
+                        as="h3"
+                        size="md"
+                        mt={3}
+                        className="panel-heading"
+                      >
+                        Configuration Panel
+                      </Heading>
+                      <ConfigPanel />
+                      <Speedops />
+                    </div>
+                  )}
+                  {showLeaderboard && (
+                    <div className="leaderboard-box">
+                      <Heading
+                        as="h3"
+                        size="md"
+                        mt={3}
+                        className="panel-heading"
+                      >
+                        LeaderBoard
+                      </Heading>
+                      <Leaderboard />
+                    </div>
+                  )}
+                </div>
+              ) : null}
 
-            <GameBoard boardSize={boardSize} />
+              <GameBoard boardSize={boardSize} />
+            </AppContext.Provider>
           </BotDataContext.Provider>
         </div>
-
         <Footer />
       </ChakraProvider>
     </div>
   );
 }
-export { BotDataContext };
+
+export { BotDataContext, AppContext }
 export default App;

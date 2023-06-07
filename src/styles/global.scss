@@ -4,21 +4,35 @@
     font-family: $font-primary;
 }
 
-.main-container{
+.main-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     background-color: #F0F0F0;
     padding: 40px 0 40px 0;
+
+    .panels-container {
+        background-color: white;
+        padding: 15px;
+        border-radius: $med-size;
+        box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+
+        .panel-heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .leaderboard-box {
+            margin-top: 20px;
+        }
+    }
+
 }
 
-.panels-container{
-    background-color: white;
-    padding: 30px 15px 30px 15px;
-}
-
-.panel-heading{
-    text-align: center;
-    margin-bottom: 20px;
+@media (max-width: 589px) {
+    .main-container {
+        flex-direction: column-reverse;
+    }
 }
