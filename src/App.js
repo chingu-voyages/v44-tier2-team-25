@@ -58,8 +58,8 @@ function App() {
     icon: "./bot4.gif",
   });
 
-  const [showLeaderboard, setShowLeaderboard] = useState(false);
-  const [showPanel, setShowPanel] = useState(false); 
+  const [showLeaderboard, setShowLeaderboard] = useState(true);
+  const [showPanel, setShowPanel] = useState(true); 
 
   return (
     <div className="App">
