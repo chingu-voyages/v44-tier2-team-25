@@ -248,6 +248,7 @@ const GameBoard = ({ boardSize }) => {
   function calculateOutcome(botA, botB, operator) {
     let battleResult;
     let battleLoser;
+    let battleTie;
     let battleWinner;
     let value1 = botA.boolean;
     let value2 = botB.boolean;
@@ -261,7 +262,7 @@ const GameBoard = ({ boardSize }) => {
           battleWinner = `winner: ${battleResult.winner.name}`;
           battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          battleWinner = "Tie";
+          battleTie = [`tie: ${botA.name}`, `tie: ${botB.name}`];
         }
         break;
       case "OR":
@@ -271,7 +272,7 @@ const GameBoard = ({ boardSize }) => {
           battleWinner = `winner: ${battleResult.winner.name}`;
           battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          battleWinner = "Tie";
+          battleTie = [`tie: ${botA.name}`, `tie: ${botB.name}`];
         }
         break;
       case "XOR":
@@ -284,7 +285,7 @@ const GameBoard = ({ boardSize }) => {
           battleWinner = `winner: ${battleResult.winner.name}`;
           battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          battleWinner = "Tie";
+          battleTie = [`tie: ${botA.name}`, `tie: ${botB.name}`];
         }
         break;
       case "NOR":
@@ -294,14 +295,18 @@ const GameBoard = ({ boardSize }) => {
           battleWinner = `winner: ${battleResult.winner.name}`;
           battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          battleWinner = "Tie";
+          battleTie = [`tie: ${botA.name}`, `tie: ${botB.name}`];
         }
         break;
       default:
         return false; // not sure what the default should be
     }
 
-    setGameResults((prevWins) => [...prevWins, battleWinner, battleLoser]);
+    setGameResults((prevWins) => [
+      ...prevWins,
+      battleWinner !== undefined ? battleWinner : battleTie[0],
+      battleLoser !== undefined ? battleLoser : battleTie[1],
+    ]);
   }
 
   return (
