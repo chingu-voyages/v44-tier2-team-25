@@ -1,4 +1,4 @@
-# Boole Bots Game
+# BooleBots Game
 
 Boole Bots is a game that combines fun with learning basic Boolean logic. In this game, bot will navigate through an 8x8 arena filled with game tiles. Your bots will move at set speed and random trajectories, making the gameplay exciting and unpredictable. Each bot is assigned a boolean value of either 0 or 1 and is associated with a specific boolean operation - AND, OR, NOR, or XOR.
 
