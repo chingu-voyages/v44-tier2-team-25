@@ -57,7 +57,7 @@ const GameBoard = ({ boardSize }) => {
             return (
               !bot1Data.hasLost && (
                 <Tooltip
-                  placement="auto"
+                  placement="top"
                   bg="orange"
                   fontSize="xs"
                   label={bot1Data.name}
@@ -77,7 +77,7 @@ const GameBoard = ({ boardSize }) => {
             return (
               !bot2Data.hasLost && (
                 <Tooltip
-                  placement="auto"
+                  placement="top"
                   bg="green.500"
                   fontSize="xs"
                   label={bot2Data.name}
@@ -98,7 +98,7 @@ const GameBoard = ({ boardSize }) => {
             return (
               !bot3Data.hasLost && (
                 <Tooltip
-                  placement="auto"
+                  placement="top"
                   bg="cyan.600"
                   fontSize="xs"
                   label={bot3Data.name}
@@ -118,7 +118,7 @@ const GameBoard = ({ boardSize }) => {
             return (
               !bot4Data.hasLost && (
                 <Tooltip
-                  placement="auto"
+                  placement="top"
                   bg="purple"
                   fontSize="xs"
                   label={bot4Data.name}
@@ -249,6 +249,7 @@ const GameBoard = ({ boardSize }) => {
   function calculateOutcome(botA, botB, operator) {
     let battleResult;
     let battleLoser;
+    let battleTie;
     let battleWinner;
     let value1 = botA.boolean;
     let value2 = botB.boolean;
@@ -262,7 +263,7 @@ const GameBoard = ({ boardSize }) => {
           battleWinner = `winner: ${battleResult.winner.name}`;
           battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          battleWinner = "Tie";
+          battleTie = [`tie: ${botA.name}`, `tie: ${botB.name}`];
         }
         break;
       case "OR":
@@ -272,7 +273,7 @@ const GameBoard = ({ boardSize }) => {
           battleWinner = `winner: ${battleResult.winner.name}`;
           battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          battleWinner = "Tie";
+          battleTie = [`tie: ${botA.name}`, `tie: ${botB.name}`];
         }
         break;
       case "XOR":
@@ -285,7 +286,7 @@ const GameBoard = ({ boardSize }) => {
           battleWinner = `winner: ${battleResult.winner.name}`;
           battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          battleWinner = "Tie";
+          battleTie = [`tie: ${botA.name}`, `tie: ${botB.name}`];
         }
         break;
       case "NOR":
@@ -295,14 +296,18 @@ const GameBoard = ({ boardSize }) => {
           battleWinner = `winner: ${battleResult.winner.name}`;
           battleLoser = `loser: ${battleResult.loser.name}`;
         } else {
-          battleWinner = "Tie";
+          battleTie = [`tie: ${botA.name}`, `tie: ${botB.name}`];
         }
         break;
       default:
         return false; // not sure what the default should be
     }
 
-    setGameResults((prevWins) => [...prevWins, battleWinner, battleLoser]);
+    setGameResults((prevWins) => [
+      ...prevWins,
+      battleWinner !== undefined ? battleWinner : battleTie[0],
+      battleLoser !== undefined ? battleLoser : battleTie[1],
+    ]);
   }
 
   return (
@@ -318,6 +323,7 @@ const GameBoard = ({ boardSize }) => {
       <ButtonGroup spacing={2} m={4}>
         <Button
           rightIcon={showPanel ? <FaUsersSlash /> : <FaUsersCog />}
+          className="btn"
           colorScheme="teal"
           variant="outline"
           size="lg"
@@ -342,6 +348,7 @@ const GameBoard = ({ boardSize }) => {
 
         <Button
           rightIcon={showLeaderboard ? <FaEyeSlash /> : <FaEye />}
+          className="btn"
           colorScheme="teal"
           variant="outline"
           size="lg"
