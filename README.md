@@ -9,7 +9,7 @@ The objective of the game is bots will move in random direction and collide with
 # Features
 
 * 8x8 game arena with randomly moving bots
-* Bots assigned boolean values (0 or 1) and boolean operations (AND, OR, NOR, NOT)
+* Bots assigned boolean values (0 or 1) and boolean operations (AND, OR, NOR, XOR)
 * Collisions between bots trigger boolean operations
 * Winning bots continue to move, losing bots disappear
 * Leaderboard displaying wins, losses and ties of each bot
