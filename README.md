@@ -70,5 +70,5 @@ This project is licensed under the MIT License. Feel free to modify and use the 
 
 # Live Demo
 Enjoy playing Boole Bots and have fun while learning Boolean logic!
-<a href="https://boolebots25.netlify.app">Try Boole Bots 🡵</a>
+<a href="https://boolebots25.netlify.app">Try BooleBots 🡵</a>
 
