@@ -1,0 +1,9 @@
+@import "../../styles/global.scss";
+@import "../../styles/variables.scss";
+
+.game-timer {
+  font-family: $font-primary;
+  color: $text-primary;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
