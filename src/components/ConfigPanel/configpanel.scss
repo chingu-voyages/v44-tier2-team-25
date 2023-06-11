@@ -1,0 +1,20 @@
+@import "../../styles/global.scss";
+@import "../../styles/variables.scss";
+
+.config-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px auto;
+  padding: 8px 24px 20px;
+  background-color: $color-secondary;
+  border-radius: $min-size;
+  max-width: 390px;
+  font-size: 14px;
+}
+
+.category-wrapper {
+  margin: 10px;
+  padding-left: $min-size;
+  font-weight: bold;
+}

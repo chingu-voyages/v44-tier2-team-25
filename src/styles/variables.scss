@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Roboto:ital,wght@1,700&display=swap');
+// fonts
+$font-primary: 'Inter', sans-serif;
+
+// base colors
+$light-color: #FFFFFF;
+$dark-color: #000000;
+$background-color: #F0F0F0;
+
+// text colors
+$text-light: $dark-color;
+$text-dark: $light-color;
+$text-primary: #3E3E3E;
+
+// 
+$color-primary: #319795;
+$color-secondary: #74C9C7;
+$color-terciary:#CEE6E6;
+
+// notification colors
+$color-confirm: #3182CE;
+$color-error: #CE3A31;
+$color-success: #009232;
+
+// sizes
+$min-size: 4px;
+$med-size: 6px;
+$max-size: 8px;

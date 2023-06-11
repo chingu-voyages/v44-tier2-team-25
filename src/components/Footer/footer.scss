@@ -1,0 +1,44 @@
+@import '../../styles/global.scss';
+
+.footer-component {
+    background-color: $color-primary;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    color: $light-color;
+}
+
+@media (min-width: 390px) {
+
+    .copyright,
+    .repository {
+        min-width: 50%;
+        text-align: left;
+    }
+
+    .repository {
+
+        .link {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+    }
+}
+
+@media (max-width: 389px) {
+    .footer-component {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .copyright,
+    .repository {
+        min-width: 100%;
+        text-align: center;
+    }
+}
