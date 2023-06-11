@@ -1,55 +1,56 @@
-# Boolebots Game
-
-<a href="https://deluxe-sopapillas-b7eb87.netlify.app" target="_blank"><img src="public/boolebots-preview.gif" alt="Boolebots Preview"/></a>
-
-# voyage-tasks
-
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
-
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
-
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
-
-> Own it & Make it your Own!
-
----
-
-## Code Review
-
-### 1 - Open the  [project repository](https://github.com/chingu-voyages/v44-tier2-team-25/).
-
-### 2 - Click on "pull requests"
-
-![image](https://github.com/chingu-voyages/v44-tier2-team-25/assets/74559558/622c4e82-a46c-4a68-851d-147cf4fd3b5f)
+# Boole Bots Game
 
 
-### 3 - Select a pull request
-
-![image](https://github.com/chingu-voyages/v44-tier2-team-25/assets/74559558/5a63bcf1-5fe1-4a6a-bba5-26d928681c23)
-
-* note that this example has 3 commits and already received a Review, you can add one more revision.
-![image](https://github.com/chingu-voyages/v44-tier2-team-25/assets/74559558/82f9c354-2246-4983-b301-998e1833c43c)
+Boole Bots is a game that is not only fun, but also an aid in helping to understand basic Boolean logic. This game has an arena of 8x8 game tiles in which your bots move at random speeds and trajectories. The Bots are assigned boolean values of 0 or 1 and boolean operations - AND, OR, NOR, NOT.
 
 
-
-### 4 - After reviewing the code (we recommend running it locally or in codespaces) click on "View reviewed changes" or "Ad review"
-![image](https://github.com/chingu-voyages/v44-tier2-team-25/assets/74559558/a53717c0-dcd1-438b-8991-300dd8003fca)
-
-* For each modified file we must check the "Viewed" option and, if necessary, add "comments" to each or a single comment before finalizing the review, as in the example below:
-
-### 5 - Click on "Review Changes", add a comment and select "approved" if everything is working or "request change" if something is broken, that's why it's important to run it locally, because the code, despite not displaying errors and conflicts, may have some problem running:
-
-![image](https://github.com/chingu-voyages/v44-tier2-team-25/assets/74559558/f9dd320f-1403-4633-8ba5-0b34ee84d940)
+When a bot collides with another bot its boolean operation is applied to both it and the other bots' boolean value to determine which one wins or loses, or if the collision results in a tie. Losing bots disappear and winning bots continue moving about the arena until only one remains.
 
 
-### 6 - after submitting the revision, the user will be notified, and after making the changes, should just commit the update in the same branch and the new commits will be displayed in the same pull request.
+The leaderboard will display the wins and losses of each bot. It will increment for a winning collision and decrement for a losing collision.
 
-![image](https://github.com/chingu-voyages/v44-tier2-team-25/assets/74559558/8f7c1131-6fc4-4eec-a94f-bd7b93179ddc)
 
-* With that, we go back to step 1 until the code is approved and goes to merge.
+# Getting Started
 
+
+1. First step is to clone the repository onto your local computer.
+```shell
+git clone git@github.com:chingu-voyages/v44-tier2-team-25.git
+```
+2. Unzip the folder and place the files where you would like to store the game.
+3. Cd into the folder
+4. npm install
+5. npm start
+
+# Team Members
+<div style="display: flex; column-gap: 0.5em; align-items: center">
+<p>Matt DeMartino</p>
+<a href="https://github.com/demartinom" target="_blank"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/Github-Dark.svg" width="20px" height="20px"/></a>
+</div>
+
+<div style="display: flex; column-gap: 0.5em; align-items: center">
+<p>Heet Dholakiya</p>
+<a href="https://github.com/heet-git" target="_blank"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/Github-Dark.svg" width="20px" height="20px"/></a>
+</div>
+
+<div style="display: flex; column-gap: 0.5em; align-items: center">
+<p>Paula Moyano</p>
+<a href="https://github.com/pm-moyanor" target="_blank"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/Github-Dark.svg" width="20px" height="20px"/></a>
+</div>
+
+<div style="display: flex; column-gap: 0.5em; align-items: center">
+<p>Paul Pessoa</p>
+<a href="https://github.com/paulpessoa" target="_blank"><img src="https://raw.githubusercontent.com/tandpfun/skill-icons/59059d9d1a2c092696dc66e00931cc1181a4ce1f/icons/Github-Dark.svg" width="20px" height="20px"/></a>
+</div>
+
+
+
+# Languages and Tools
+### -React
+### -ChakraUI
+### -Sass
+### -<a href="https://github.com/albert-gonzalez/easytimer-react-hook" target="_blank">EasyTimer</a>
+
+
+# Live Demo
+<a href="https://boolebots25.netlify.app">Try Boole Bots</a>
